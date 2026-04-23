@@ -37,3 +37,7 @@ databases/
 
 # Uploads
 uploads/
+
+# Python cache
+__pycache__/
+*.pyc
