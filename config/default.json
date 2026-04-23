@@ -82,7 +82,7 @@
   },
 
   "security": {
-    "secret_key": "your-secret-key-here",
+    "secret_key": "123456789",
     "api_key_header": "X-API-Key",
     "rate_limit": {
       "enabled": false,
@@ -146,28 +146,438 @@
     "_description": "GW2增益效果ID映射表，用于识别玩家提供的增益类型"
   },
 
-  "prof_roles": {
-    "Firebrand": "SUPPORT",
-    "Herald": "SUPPORT",
-    "Chronomancer": "SUPPORT",
-    "Druid": "SUPPORT",
-    "Mechanist": "SUPPORT",
-    "Tempest": "SUPPORT",
-    "Scrapper": "SUPPORT",
-    "Scourge": "UTILITY",
-    "Spellbreaker": "UTILITY",
-    "Vindicator": "UTILITY",
-    "Berserker": "DPS",
-    "Willbender": "DPS",
-    "Soulbeast": "DPS",
-    "Virtuoso": "DPS",
-    "Reaper": "DPS",
-    "Holosmith": "DPS",
-    "Deadeye": "DPS",
-    "Daredevil": "DPS",
-    "Catalyst": "DPS",
-    "_description": "职业默认角色定位映射表，用于自动识别玩家角色类型"
-  },
+  "professions": [
+    {
+        "Guardian": "守护者",
+        "colors": {"bg": "bg-yellow-100", "text": "text-yellow-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "守护者核心以强大的团队保护能力著称，提供大量防御增益和控制技能。",
+            "icon": "shield"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Firebrand": "燃火者",
+        "colors": {"bg": "bg-yellow-100", "text": "text-yellow-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "燃火者（决战迈古玛）：圣书魔法，火焰伤害。斧，圣书代替美德。",
+            "icon": "book"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Willbender": "破锋者",
+        "colors": {"bg": "bg-yellow-100", "text": "text-yellow-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "破锋者（烈焰征途）：弯刀火焰，主动美德。副手剑，体术技能。",
+            "icon": "swiftness"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Dragonhunter": "猎龙者",
+        "colors": {"bg": "bg-yellow-100", "text": "text-yellow-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "猎龙者（巨龙绝境）：龙魂守护，防御强化。盾牌，龙魂技能。",
+            "icon": "crossbow"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Vindicator": "圣辉者",
+        "colors": {"bg": "bg-indigo-100", "text": "text-indigo-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "圣辉者（永恒愿景）：光辉帷幕，光明火焰。光辉熔炉，姿态技能。",
+            "icon": "light"
+        },
+        "defaultRole": "功能"
+    },
+    {
+        "Warrior": "战士",
+        "colors": {"bg": "bg-red-100", "text": "text-red-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "战士核心提供稳定的物理输出和基本的团队增益。",
+            "icon": "sword"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Berserker": "狂战士",
+        "colors": {"bg": "bg-red-100", "text": "text-red-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "狂战士（决战迈古玛）：怒气爆发，双持武器。双持匕首，怒气过载。",
+            "icon": "axe"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Spellbreaker": "破法者",
+        "colors": {"bg": "bg-red-100", "text": "text-red-800"},
+        "core": {
+            "types": {"UTILITY": "功能"},
+            "description": "破法者（烈焰征途）：冥想反击，法术格挡。副手剑，全力反击技能。",
+            "icon": "shield-break"
+        },
+        "defaultRole": "功能"
+    },
+    {
+        "Bladesworn": "誓剑士",
+        "colors": {"bg": "bg-red-100", "text": "text-red-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "誓剑士（巨龙绝境）：巨龙劈砍，军械系统。副手手枪，巨龙劈砍机制。",
+            "icon": "dragon"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Engineer": "工程师",
+        "colors": {"bg": "bg-orange-100", "text": "text-orange-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "工程师核心具有多样化的技能组合，适应各种战斗情况。",
+            "icon": "toolkit"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Scrapper": "机械师",
+        "colors": {"bg": "bg-orange-100", "text": "text-orange-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "机械师（决战迈古玛）：功能机型，团队支援。巨锤，法池技能。",
+            "icon": "hammer"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Holosmith": "全息师",
+        "colors": {"bg": "bg-orange-100", "text": "text-orange-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "全息师（烈焰征途）：光子熔炉，超越技能。剑，光子熔炉代替工具带技能。",
+            "icon": "photon"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Mechanist": "玉偃师",
+        "colors": {"bg": "bg-orange-100", "text": "text-orange-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "玉偃师（巨龙绝境）：玉偃师机甲，远程操控。步枪，机甲系统。",
+            "icon": "mech"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Kinetic": "流金师",
+        "colors": {"bg": "bg-orange-100", "text": "text-orange-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "流金师（永恒愿景）：金属变形，进化技能。变形技能，进化机制。",
+            "icon": "metal"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Ranger": "游侠",
+        "colors": {"bg": "bg-green-100", "text": "text-green-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "游侠核心与宠物配合，提供均衡的战斗能力。",
+            "icon": "bow"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Druid": "德鲁伊",
+        "colors": {"bg": "bg-green-100", "text": "text-green-800"},
+        "core": {
+            "types": {"HEALING": "治疗"},
+            "description": "德鲁伊（决战迈古玛）：日光形态，治疗支援。战号，日光形态。",
+            "icon": "nature"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Soulbeast": "魂兽师",
+        "colors": {"bg": "bg-green-100", "text": "text-green-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "魂兽师（烈焰征途）：宠物融合，野兽之力。长弓，宠物融合机制。",
+            "icon": "beast"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Untamed": "狂兽师",
+        "colors": {"bg": "bg-green-100", "text": "text-green-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "狂兽师（巨龙绝境）：野兽本能，狂暴攻击。巨锤，野兽本能技能。",
+            "icon": "unleashed"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Sylvarin": "风羽者",
+        "colors": {"bg": "bg-green-100", "text": "text-green-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "风羽者（永恒愿景）：旋风之弓，狂风操控。旋风之弓，箭矢资源系统。",
+            "icon": "wind"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Thief": "潜行者",
+        "colors": {"bg": "bg-gray-200", "text": "text-gray-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "潜行者核心擅长快速打击和症状施加。",
+            "icon": "dagger"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Daredevil": "独行侠",
+        "colors": {"bg": "bg-gray-200", "text": "text-gray-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "独行侠（决战迈古玛）：法杖近战，翻滚强化。法杖，体术技能，额外翻滚。",
+            "icon": "staff"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Deadeye": "神枪手",
+        "colors": {"bg": "bg-gray-200", "text": "text-gray-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "神枪手（烈焰征途）：精准射击，标记系统。步枪，神枪手标记代替 F1 机制。",
+            "icon": "rifle"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Specter": "缚影者",
+        "colors": {"bg": "bg-gray-200", "text": "text-gray-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "缚影者（巨龙绝境）：暗影帷幕，魔法攻击。节杖，法池技能，暗影帷幕。",
+            "icon": "shadow"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Nightblade": "彩戏师",
+        "colors": {"bg": "bg-gray-200", "text": "text-gray-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "夜刃（永恒愿景）：暗影利刃，潜行爆发。暗影利刃技能，潜行强化。",
+            "icon": "blade"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Elementalist": "元素使",
+        "colors": {"bg": "bg-cyan-100", "text": "text-cyan-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "元素使核心精通四系元素，提供多样化输出。",
+            "icon": "element"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Tempest": "暴风使",
+        "colors": {"bg": "bg-cyan-100", "text": "text-cyan-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "暴风使（决战迈古玛）：元素过载，战吼技能。战号，元素过载机制。",
+            "icon": "storm"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Weaver": "编织者",
+        "colors": {"bg": "bg-cyan-100", "text": "text-cyan-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "编织者（烈焰征途）：双重协调，元素编织。剑，姿态技能，双重攻击。",
+            "icon": "dual"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Catalyst": "暴风师",
+        "colors": {"bg": "bg-cyan-100", "text": "text-cyan-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "催化师（巨龙绝境）：元素催化剂，增益强化。巨锤，催化剂系统。",
+            "icon": "orb"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Animist": "唤元师",
+        "colors": {"bg": "bg-cyan-100", "text": "text-cyan-800"},
+        "core": {
+            "types": {"HEALING": "治疗"},
+            "description": "唤元师（永恒愿景）：野性之灵，魔宠召唤。魔宠系统（狐狸、水獭、野兔、熊）。",
+            "icon": "spirit"
+        },
+        "defaultRole": "治疗"
+    },
+    {
+        "Mesmer": "幻术师",
+        "colors": {"bg": "bg-purple-100", "text": "text-purple-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "幻术师核心擅长幻象和混乱，提供强大的控制能力。",
+            "icon": "clone"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Chronomancer": "时空术士",
+        "colors": {"bg": "bg-purple-100", "text": "text-purple-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "时空术士（决战迈古玛）：时间操控，盾牌防御。盾牌，法池技能，第五个粉碎技能。",
+            "icon": "clock"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Mirage": "幻象术士",
+        "colors": {"bg": "bg-purple-100", "text": "text-purple-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "幻象术士（烈焰征途）：幻象斗篷，伏击攻击。利斧，伏击技能，诡计能力。",
+            "icon": "prism"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Virtuoso": "灵刃术士",
+        "colors": {"bg": "bg-purple-100", "text": "text-purple-800"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "灵刃术士（巨龙绝境）：精神匕首，远程攻击。匕首，灵能技能，精神利刃。",
+            "icon": "blades"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Bard": "吟游诗人",
+        "colors": {"bg": "bg-purple-100", "text": "text-purple-800"},
+        "core": {
+            "types": {"HEALING": "治疗"},
+            "description": "吟游诗人（永恒愿景）：音乐魔法，团队支援。竖琴，叙事技能，音符系统。",
+            "icon": "harp"
+        },
+        "defaultRole": "治疗"
+    },
+    {
+        "Necromancer": "唤灵师",
+        "colors": {"bg": "bg-gray-300", "text": "text-gray-900"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "死灵法师核心擅长症状伤害和生命值管理。",
+            "icon": "death"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Reaper": "夺魂者",
+        "colors": {"bg": "bg-gray-300", "text": "text-gray-900"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "夺魂者（决战迈古玛）：夺魂之幕，巨剑攻击。巨剑，夺魂之幕代替死亡之幕。",
+            "icon": "scythe"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Scourge": "灾厄师",
+        "colors": {"bg": "bg-gray-300", "text": "text-gray-900"},
+        "core": {
+            "types": {"UTILITY": "功能"},
+            "description": "灾厄师（烈焰征途）：沙影领域，症状伤害。火炬，惩罚技能，沙影机制。",
+            "icon": "sand"
+        },
+        "defaultRole": "功能"
+    },
+    {
+        "Harbinger": "先驱者",
+        "colors": {"bg": "bg-gray-300", "text": "text-gray-900"},
+        "core": {
+            "types": {"DPS": "输出"},
+            "description": "先驱者（巨龙绝境）：试剂系统，远程攻击。手枪，试剂技能。",
+            "icon": "elixir"
+        },
+        "defaultRole": "输出"
+    },
+    {
+        "Ritualist": "祭祀者",
+        "colors": {"bg": "bg-gray-300", "text": "text-gray-900"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "祭祀者（永恒愿景）：死亡仪式，灵魂操控。仪式技能，灵魂召唤。",
+            "icon": "ritual"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Revenant": "魂武者",
+        "colors": {"bg": "bg-indigo-100", "text": "text-indigo-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "魂武者核心借用传奇之力，提供多样化的支援。",
+            "icon": "spirit"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Herald": "预告者",
+        "colors": {"bg": "bg-indigo-100", "text": "text-indigo-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "预告者（决战迈古玛）：传奇恶魔，腐化伤害。钉锤，腐化技能。",
+            "icon": "dragon"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "Renegade": "龙魂使",
+        "colors": {"bg": "bg-indigo-100", "text": "text-indigo-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "龙魂使（烈焰征途）：巨龙姿态，元素力量。传奇巨龙姿态。",
+            "icon": "knight"
+        },
+        "defaultRole": "辅助"
+    },
+    {
+        "ForbiddenOathkeeper": "契灵使",
+        "colors": {"bg": "bg-indigo-100", "text": "text-indigo-800"},
+        "core": {
+            "types": {"SUPPORT": "辅助"},
+            "description": "契灵使（永恒愿景）：雷萨之力，宇宙智慧。传奇雷萨姿态，亲和形态。",
+            "icon": "cosmic"
+        },
+        "defaultRole": "辅助"
+    }
+],
 
   "environment": "development",
   "_environment_values": {

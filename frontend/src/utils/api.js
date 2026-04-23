@@ -75,4 +75,30 @@ export const clearData = (type) => {
   })
 }
 
+export const getProfessions = () => {
+  return api.get('/professions')
+}
+
+export const getProfessionTranslations = () => {
+  return api.get('/professions/translations')
+}
+
+export const getProfessionColors = () => {
+  return api.get('/professions/colors')
+}
+
+export const getProfessionRoles = () => {
+  return api.get('/professions/roles')
+}
+
+export const getDefaultRoles = () => {
+  return api.get('/professions/default-roles')
+}
+
+export const getProfessionRoleInfo = (profession, specialization) => {
+  return api.get(`/professions/${profession}/role`, {
+    params: { specialization }
+  })
+}
+
 export default api

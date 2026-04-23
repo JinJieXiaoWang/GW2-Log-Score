@@ -310,8 +310,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getAttendance } from '../utils/api'
-import { usePlayerDisplay } from '../composables/index.js'
-import { translateProfession, getProfessionClass, getRoleBadgeClass } from '../constants/index.js'
+import { usePlayerDisplay, useProfessions } from '../composables/index.js'
 import { formatDate } from '../utils/index.js'
 
 const attendanceData = ref([])
@@ -331,6 +330,13 @@ const {
   shouldShowSecondaryName,
   getDisplayNameInitial
 } = usePlayerDisplay()
+
+const {
+  loadProfessions,
+  translateProfession,
+  getProfessionClass,
+  getRoleBadgeClass
+} = useProfessions()
 
 const getModeBadgeClass = (mode) => {
   if (mode && mode.includes('WvW')) return 'bg-indigo-50 text-indigo-600'
@@ -371,7 +377,8 @@ const closeDetailModal = () => {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
+  loadProfessions()
   loadAttendanceData()
 })
 </script>

@@ -11,7 +11,7 @@ from src.parser.gw2_log_parser import GW2LogParser
 from src.scoring.scoring_engine import ScoringEngine
 from src.database.db_manager import DBManager
 from src.reports.exporter import export_report
-from src.config import settings
+from src.config import settings, PROFESSIONS, PROFESSION_COLORS, ROLE_CONFIG, PROF_ROLES, PROFESSIONS_FULL_DATA, ROLE_TYPE_TRANSLATIONS
 from src.core.logger import Logger
 
 logger = Logger(__name__)
@@ -567,3 +567,120 @@ async def clear_data(request: ClearDataRequest):
     except Exception as e:
         logger.error(f"Failed to clear data: {e}")
         raise HTTPException(status_code=500, detail=f"清空数据失败: {type(e).__name__}")
+
+
+@router.get("/professions", summary="获取职业信息", description="获取所有职业的完整信息，包括翻译、颜色、角色定位配置")
+async def get_professions():
+    """
+    获取所有职业的完整信息
+
+    Returns:
+        包含职业翻译、颜色、角色类型、角色定位配置的完整数据
+    """
+    try:
+        return {
+            "status": "success",
+            "data": PROFESSIONS_FULL_DATA
+        }
+    except Exception as e:
+        logger.error(f"Failed to get professions: {e}")
+        raise HTTPException(status_code=500, detail=f"获取职业信息失败: {type(e).__name__}")
+
+
+@router.get("/professions/translations", summary="获取职业翻译", description="获取职业名称的中文翻译映射")
+async def get_profession_translations():
+    """
+    获取职业名称翻译映射
+
+    Returns:
+        职业英文名到中文的映射字典
+    """
+    try:
+        return {
+            "status": "success",
+            "data": PROFESSIONS
+        }
+    except Exception as e:
+        logger.error(f"Failed to get profession translations: {e}")
+        raise HTTPException(status_code=500, detail=f"获取职业翻译失败: {type(e).__name__}")
+
+
+@router.get("/professions/colors", summary="获取职业颜色", description="获取职业对应的显示颜色配置")
+async def get_profession_colors():
+    """
+    获取职业显示颜色配置
+
+    Returns:
+        职业对应的Tailwind颜色类
+    """
+    try:
+        return {
+            "status": "success",
+            "data": PROFESSION_COLORS
+        }
+    except Exception as e:
+        logger.error(f"Failed to get profession colors: {e}")
+        raise HTTPException(status_code=500, detail=f"获取职业颜色失败: {type(e).__name__}")
+
+
+@router.get("/professions/roles", summary="获取角色定位", description="获取职业的角色定位配置，包括主副角色类型和描述")
+async def get_profession_roles():
+    """
+    获取职业角色定位配置
+
+    Returns:
+        各职业精英特长的角色类型配置
+    """
+    try:
+        return {
+            "status": "success",
+            "data": ROLE_CONFIG
+        }
+    except Exception as e:
+        logger.error(f"Failed to get profession roles: {e}")
+        raise HTTPException(status_code=500, detail=f"获取角色定位失败: {type(e).__name__}")
+
+
+@router.get("/professions/default-roles", summary="获取默认角色定位", description="获取职业的默认角色定位映射")
+async def get_default_roles():
+    """
+    获取职业默认角色定位
+
+    Returns:
+        职业到默认角色类型的映射
+    """
+    try:
+        return {
+            "status": "success",
+            "data": PROF_ROLES
+        }
+    except Exception as e:
+        logger.error(f"Failed to get default roles: {e}")
+        raise HTTPException(status_code=500, detail=f"获取默认角色定位失败: {type(e).__name__}")
+
+
+@router.get("/professions/{profession}/role", summary="获取职业特定精英特长的角色定位", description="获取指定职业和精英特长的角色定位信息")
+async def get_profession_role_info(profession: str, specialization: str = Query(..., description="精英特长名称")):
+    """
+    获取指定职业和精英特长的角色定位信息
+
+    Args:
+        profession: 职业名称 (如 Guardian, Warrior 等)
+        specialization: 精英特长名称 (如 core, Firebrand 等)
+
+    Returns:
+        该职业精英特长的角色类型配置
+    """
+    try:
+        role_info = config_loader.get_profession_role_info(profession, specialization)
+        if role_info is None:
+            raise HTTPException(status_code=404, detail=f"未找到职业 {profession} 的精英特长 {specialization}")
+        return {
+            "status": "success",
+            "data": role_info
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Failed to get profession role info: {e}")
+        raise HTTPException(status_code=500, detail=f"获取角色定位失败: {type(e).__name__}")

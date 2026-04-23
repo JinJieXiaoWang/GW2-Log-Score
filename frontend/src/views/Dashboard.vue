@@ -208,7 +208,7 @@
               </td>
               <td class="px-8 py-5 border-r border-gray-100">
                 <span
-                  :class="getProfessionClass(translateProfession(record.profession))"
+                  :class="getProfessionClass(record.profession)"
                   class="text-xs px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter"
                 >
                   {{ translateProfession(record.profession) }}
@@ -219,7 +219,7 @@
                   :class="getRoleBadgeClass(record.role)"
                   class="text-xs px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter"
                 >
-                  {{ record.role || 'DPS' }}
+                  {{ translateRole(record.role) }}
                 </span>
               </td>
               <td class="px-8 py-5 border-r border-gray-100">
@@ -393,12 +393,7 @@ import { ref, onMounted } from 'vue'
 import AlertDialog from '../components/AlertDialog.vue'
 import PlayerDetail from '../components/PlayerDetail.vue'
 import { uploadLog, syncData, getScores, clearData } from '../utils/api'
-import { usePlayerDisplay, useCoreMetrics } from '../composables/index.js'
-import {
-  translateProfession,
-  getProfessionClass,
-  getRoleBadgeClass
-} from '../constants/index.js'
+import { usePlayerDisplay, useCoreMetrics, useProfessions } from '../composables/index.js'
 import { getScoreColorClass, formatMetricValue } from '../utils/index.js'
 
 const scores = ref([])
@@ -433,6 +428,15 @@ const {
 } = usePlayerDisplay()
 
 const { getCoreMetrics } = useCoreMetrics()
+
+const {
+  loadProfessions,
+  translateProfession,
+  getProfessionClass,
+  getRoleBadgeClass,
+  translateRole,
+  getProfessionType
+} = useProfessions()
 
 const isNonSquadPlayer = (account) => {
   if (!account) return true
@@ -544,7 +548,9 @@ const loadScores = async () => {
 
     todayDetails.value = sortedTodayData.map((s, index) => {
       const details = parseDetails(s.details)
-      const role = s.role || details.role || 'DPS'
+      const profession = s.profession || details.profession || 'Unknown'
+      // 使用getProfessionType函数获取正确的职业定位
+      const role = getProfessionType(profession)
 
       return {
         id: s.id || index,
@@ -552,7 +558,7 @@ const loadScores = async () => {
         encounter: s.encounter_name || '',
         player_name: s.player_name || '',
         account: s.account || details.account || '',
-        profession: s.profession || details.profession || 'Unknown',
+        profession: profession,
         role: role,
         dps: details.dps || details.dps_val || 0,
         cc: details.cc || details.cc_val || 0,
@@ -708,18 +714,20 @@ const confirmClearData = async () => {
       await loadScores()
       showAlert(`${type === 'today' ? '当天' : '全部'}数据清除成功`, 'success')
     } else {
-      showAlert('数据清除失败，请重试', 'error')
+      showAlert(response.data?.message || '数据清除失败，请重试', 'error')
     }
   } catch (error) {
     console.error('清除数据失败:', error)
-    showAlert('数据清除失败，请重试', 'error')
+    const errorMessage = error.response?.data?.detail || '数据清除失败，请检查网络连接或稍后重试'
+    showAlert(errorMessage, 'error')
   } finally {
     closeConfirmModal(true) // 从确认操作调用，不重新打开图1
     closeClearDataModal()
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
+  loadProfessions()
   loadScores()
 })
 </script>

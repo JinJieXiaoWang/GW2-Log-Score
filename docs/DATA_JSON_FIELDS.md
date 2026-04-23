@@ -222,13 +222,13 @@
 ## 5. 文件中已有的玩家样例 (从 tests/data.json)
 
 根据测试文件，data.json 包含的玩家：
-- 帅妹妹丶.8297 (职业：Scourge)
-- Doubface.5319 (职业：Herald)
-- 帅姐姐 (职业：Renegade)
+- 夺魂者 (职业：Scourge)
+- 机械师 (职业：Herald)
+- 夺魂者 (职业：Renegade)
 - 破法者 (职业：Spellbreaker)
 - 独行侠 (职业：Soulbeast)
-- 一杯清茶饮浊酒 (职业：Bladesworn)
-- 小泽玛利亚你脱呀 (职业：Mechanist)
+- 彩戏师 (职业：Bladesworn)
+- 预告者 (职业：Mechanist)
 - 裁决者 (职业：Willbender)
 - 猎龙者 (职业：Dragonhunter)
 - 流金师 (职业：Tempest)
@@ -239,7 +239,7 @@
 1. **account 字段解析**: 
    - 格式通常是 `PlayerName.XXXX` 或 `PlayerName`
    - 如果包含 '.'，可以提取 `.` 之前部分作为角色名，之后作为数字ID
-   - 但也有像 "帅姐姐" 这种没有数字ID的格式
+   - 但也有像 "xxx" 这种没有数字ID的格式
 
 2. **profession 字段**: 
    - 是专精名称，不是基础职业

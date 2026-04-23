@@ -3,3 +3,4 @@
  */
 export { usePlayerDisplay } from './usePlayerDisplay.js'
 export { useCoreMetrics } from './useCoreMetrics.js'
+export { useProfessions } from './useProfessions.js'

@@ -266,18 +266,25 @@ class DBManager:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
                 
-                # 获取需要删除的log_ids
+                # 获取需要删除的log_ids（根据combat_logs的date字段）
                 cursor.execute('''
-                    SELECT log_id FROM file_fingerprints
-                    WHERE upload_date = ?
-                ''', (today,))
+                    SELECT log_id FROM combat_logs
+                    WHERE date LIKE ?
+                ''', (f"{today}%",))
                 log_ids = [row[0] for row in cursor.fetchall()]
                 
                 if log_ids:
                     for log_id in log_ids:
                         cursor.execute('DELETE FROM combat_scores WHERE log_id = ?', (log_id,))
-                        cursor.execute('DELETE FROM combat_logs WHERE log_id = ?', (log_id,))
+                        cursor.execute('DELETE FROM file_fingerprints WHERE log_id = ?', (log_id,))
                 
+                # 删除当天的战斗日志
+                cursor.execute('''
+                    DELETE FROM combat_logs
+                    WHERE date LIKE ?
+                ''', (f"{today}%",))
+                
+                # 同时删除当天上传的文件指纹
                 cursor.execute('DELETE FROM file_fingerprints WHERE upload_date = ?', (today,))
                 conn.commit()
             print(f"{today}的当日数据已清空")

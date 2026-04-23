@@ -81,8 +81,7 @@
 </template>
 
 <script setup>
-import { usePlayerDisplay } from '../composables/index.js'
-import { translateProfession, getProfessionClass } from '../constants/index.js'
+import { usePlayerDisplay, useProfessions } from '../composables/index.js'
 import { getScoreColorClass, getScoreBarColorClass } from '../utils/index.js'
 
 defineProps({
@@ -102,6 +101,11 @@ const {
   shouldShowSecondaryName,
   getDisplayNameInitial
 } = usePlayerDisplay()
+
+const {
+  translateProfession,
+  getProfessionClass
+} = useProfessions()
 
 const selectPlayer = (score) => {
   emit('select-player', score)

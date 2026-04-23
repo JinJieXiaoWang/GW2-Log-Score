@@ -124,14 +124,12 @@
           </h2>
           <button 
             class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
-            @click="closeOverviewModal"
-          >
+            @click="closeOverviewModal">
             <svg
               class="w-4 h-4 text-gray-500"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+              viewBox="0 0 24 24">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -378,6 +376,7 @@
 import { ref, onMounted, nextTick, computed, watch } from 'vue'
 import PlayerDetail from '../components/PlayerDetail.vue'
 import { getHistory, getScores } from '../utils/api'
+import { useProfessions } from '../composables/index.js'
 import * as echarts from 'echarts'
 
 const historyLogs = ref([])
@@ -399,18 +398,12 @@ let historyRadarChart = null
 let trendChart = null
 let professionChart = null
 
-// 职业数据静态配置
-const professions = ref([
-  { name: '战士', specializations: ['狂战士', '破法者', '誓剑士', '圣言士'] },
-  { name: '守护者', specializations: ['燃火者', '破锋者', '龙卫', '圣辉者'] },
-  { name: '魂武者', specializations: ['预告者', '龙魂使', '裁决者', '契灵使'] },
-  { name: '游侠', specializations: ['德鲁伊', '魂兽师', '狂兽师', '风羽者'] },
-  { name: '工程师', specializations: ['机械师', '全息师', '玉偃师', '流金师'] },
-  { name: '潜行者', specializations: ['独行侠', '神枪手', '缚影者', '夜刃'] },
-  { name: '元素使', specializations: ['暴风使', '编织者', '催化师', '唤元师'] },
-  { name: '唤灵师', specializations: ['夺魂者', '灾厄师', '先驱者', '祭祀者'] },
-  { name: '幻术师', specializations: ['时空术士', '幻象术士', '灵刃术士', '吟游诗人'] }
-])
+// 使用职业数据hook
+const {
+  loadProfessions,
+  translateProfession,
+  translations
+} = useProfessions()
 
 const historyAvgScores = computed(() => {
   const playerMap = {}
@@ -535,12 +528,7 @@ const getDisplayNameInitial = (player) => {
   return (displayName || 'U')[0]
 }
 
-const translateProfession = (profession) => {
-  if (!profession) return '未知'
-  
-  // 直接返回职业名称，不再使用translations数据
-  return profession
-}
+
 
 
 
@@ -587,20 +575,9 @@ const initProfessionChart = () => {
     
     // 统计职业分布
     const professionMap = {}
-    const professionTranslations = {
-      'Guardian': '守护者',
-      'Warrior': '战士',
-      'Engineer': '工程师',
-      'Ranger': '游侠',
-      'Thief': '潜行者',
-      'Elementalist': '元素使',
-      'Mesmer': '幻术师',
-      'Necromancer': '唤灵师',
-      'Revenant': '魂武者'
-    }
     scores.value.forEach(s => {
       const profession = s.profession || 'Unknown'
-      const translatedProfession = professionTranslations[profession] || profession
+      const translatedProfession = translateProfession(profession)
       professionMap[translatedProfession] = (professionMap[translatedProfession] || 0) + 1
     })
     
@@ -1043,7 +1020,10 @@ const handleCustomDateChange = () => {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
+  // 先加载职业数据
+  await loadProfessions()
+  // 然后加载历史数据
   loadHistory()
 })
 </script>

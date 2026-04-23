@@ -11,7 +11,7 @@ GW2-Log-Score/
 ├── docs/              # 项目文档
 ├── frontend/          # 前端代码
 ├── logs/              # 日志文件
-├── scripts/           # 脚本工具
+├── resources/         # 资源文件
 ├── src/               # 后端源码
 │   ├── api/           # API接口
 │   ├── config/        # 配置管理
@@ -21,9 +21,17 @@ GW2-Log-Score/
 │   ├── parser/        # 日志解析器
 │   ├── reports/       # 报表生成
 │   └── scoring/       # 评分系统
-├── tests/             # 测试文件
 └── uploads/           # 上传文件
 ```
+
+## 技术栈
+
+- **前端**：Vue.js 3, Vite, Tailwind CSS, ECharts
+- **后端**：FastAPI, SQLite
+- **状态管理**：Vue Composition API
+- **路由管理**：Vue Router
+- **HTTP客户端**：Axios
+- **代码规范**：ESLint, Prettier
 
 ## 功能特性
 
@@ -33,6 +41,8 @@ GW2-Log-Score/
 - **评分系统**：基于战斗表现对玩家进行评分
 - **数据可视化**：提供直观的数据展示界面
 - **API接口**：提供RESTful API接口供前端调用
+- **职业颜色区分**：不同职业和定位有明显的视觉标识
+- **职业定位显示**：正确显示职业的定位信息
 
 ## 快速开始
 
@@ -40,19 +50,20 @@ GW2-Log-Score/
 
 ```bash
 pip install -r requirements.txt
+cd frontend
+npm install
 ```
 
 ### 运行后端
 
 ```bash
-python src/main.py
+python src/main.py --serve --port 8080
 ```
 
 ### 运行前端
 
 ```bash
 cd frontend
-npm install
 npm run dev
 ```
 
@@ -94,6 +105,10 @@ WvW评分基于以下因素：
 - `GET /api/players` - 获取玩家列表
 - `GET /api/attendance` - 获取出勤记录
 - `GET /api/scores` - 获取评分数据
+- `GET /api/professions` - 获取职业信息
+- `GET /api/history` - 获取历史数据
+- `POST /api/clear` - 清除数据
+- `POST /api/sync` - 同步数据
 
 ## 开发指南
 
@@ -103,14 +118,12 @@ WvW评分基于以下因素：
 - **black**：代码格式化
 - **isort**：导入排序
 - **flake8**：代码质量检查
+- **ESLint**：前端代码质量检查
+- **Prettier**：前端代码格式化
 
-### 测试
+### 配置文件
 
-运行测试：
-
-```bash
-python -m pytest tests/
-```
+职业配置文件位于 `config/default.json`，包含职业翻译、颜色和定位信息。
 
 ## 贡献
 

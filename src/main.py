@@ -19,7 +19,12 @@ logger = Logger(__name__)
 
 
 class App:
-    def __init__(self, db_path="databases/gw2_logs.db"):
+    def __init__(self, db_path=None):
+        if db_path is None:
+            db_path = os.path.join(
+                os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                "databases", "gw2_logs.db"
+            )
         self.db = DBManager(db_path)
         self.parser = GW2LogParser()
         self.scorer = ScoringEngine()
@@ -78,17 +83,88 @@ class App:
             logger.error(f"Failed to export report: {e}")
 
 
+def validate_path(path, path_type="file"):
+    """验证文件或目录路径是否存在"""
+    if not os.path.exists(path):
+        return False, f"指定的{path_type}路径不存在: {path}"
+    if path_type == "file" and not os.path.isfile(path):
+        return False, f"指定的路径不是有效文件: {path}"
+    if path_type == "dir" and not os.path.isdir(path):
+        return False, f"指定的路径不是有效目录: {path}"
+    return True, None
+
 def main():
-    parser = argparse.ArgumentParser(description="激战2日志解析与出勤评分系统")
-    parser.add_argument("--dir", help="指定待解析日志所在的文件夹路径")
-    parser.add_argument("--file", help="指定单个待解析日志文件路径")
-    parser.add_argument("--export", help="导出全量历史评分报表 (CSV路径)")
-    parser.add_argument("--db", default="databases/gw2_logs.db", help="指定数据库文件路径")
-    parser.add_argument("--serve", action="store_true", help="启动FastAPI服务器")
-    parser.add_argument("--host", default=HOST, help="服务器主机地址")
-    parser.add_argument("--port", default=PORT, type=int, help="服务器端口")
+    parser = argparse.ArgumentParser(
+        description="激战2日志解析与出勤评分系统",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+使用示例:
+  python main.py --serve                          # 启动API服务器
+  python main.py --serve --port 8080             # 自定义端口启动服务器
+  python main.py --dir ./logs                     # 解析指定目录下的所有日志
+  python main.py --file ./logs/boss.json          # 解析单个日志文件
+  python main.py --export ./report.csv             # 导出历史评分报表
+  python main.py --db ./custom.db --serve          # 使用自定义数据库启动服务器
+
+如需查看详细帮助信息，请使用: python main.py -h
+        """
+    )
+
+    parser.add_argument(
+        "--dir",
+        help="指定待解析日志所在的文件夹路径",
+        metavar="FOLDER_PATH"
+    )
+    parser.add_argument(
+        "--file",
+        help="指定单个待解析日志文件路径",
+        metavar="FILE_PATH"
+    )
+    parser.add_argument(
+        "--export",
+        help="导出全量历史评分报表 (CSV路径)",
+        metavar="CSV_PATH"
+    )
+    parser.add_argument(
+        "--db",
+        help="指定数据库文件路径 (默认: databases/gw2_logs.db)",
+        default="databases/gw2_logs.db",
+        metavar="DB_PATH"
+    )
+    parser.add_argument(
+        "--serve",
+        action="store_true",
+        help="启动FastAPI服务器"
+    )
+    parser.add_argument(
+        "--host",
+        default=HOST,
+        help=f"服务器主机地址 (默认: {HOST})",
+        metavar="HOST"
+    )
+    parser.add_argument(
+        "--port",
+        default=PORT,
+        type=int,
+        help=f"服务器端口 (默认: {PORT})",
+        metavar="PORT"
+    )
 
     args = parser.parse_args()
+
+    if args.port:
+        if args.port < 1 or args.port > 65535:
+            print(f"错误: 端口号必须介于 1 到 65535 之间，当前值: {args.port}")
+            sys.exit(1)
+
+    db_dir = os.path.dirname(args.db)
+    if db_dir and not os.path.exists(db_dir):
+        try:
+            os.makedirs(db_dir, exist_ok=True)
+            logger.info(f"已创建数据库目录: {db_dir}")
+        except Exception as e:
+            print(f"错误: 无法创建数据库目录 {db_dir}: {e}")
+            sys.exit(1)
 
     if args.serve:
         logger.info(f"Starting server on {args.host}:{args.port}")
@@ -97,8 +173,16 @@ def main():
         app = App(args.db)
 
         if args.file:
+            is_valid, error_msg = validate_path(args.file, "file")
+            if not is_valid:
+                print(f"错误: {error_msg}")
+                sys.exit(1)
             app.process_file(args.file)
         elif args.dir:
+            is_valid, error_msg = validate_path(args.dir, "dir")
+            if not is_valid:
+                print(f"错误: {error_msg}")
+                sys.exit(1)
             app.process_folder(args.dir)
         elif args.export:
             app.export_report(args.export)
