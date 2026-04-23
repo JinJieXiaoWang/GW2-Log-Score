@@ -1,0 +1,33 @@
+{
+  "common": {
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info"
+  },
+  "upload": {
+    "success": "Upload successful",
+    "error": "Upload failed",
+    "processing": "Processing...",
+    "file_type_error": "Invalid file type"
+  },
+  "scoring": {
+    "dps": "Damage Per Second",
+    "survival": "Survival",
+    "cc": "Crowd Control",
+    "healing": "Healing",
+    "cleanses": "Cleanses",
+    "stability": "Stability",
+    "resistance": "Resistance",
+    "quickness": "Quickness"
+  },
+  "roles": {
+    "DPS": "DPS",
+    "SUPPORT": "Support",
+    "UTILITY": "Utility"
+  },
+  "modes": {
+    "PVE": "PVE",
+    "WvW": "WvW"
+  }
+}

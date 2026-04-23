@@ -1,0 +1,447 @@
+{
+  "meta": {
+    "build_date": "20260414",
+    "revision": 1,
+    "boss_id": 15438,
+    "gw2_build": 198999,
+    "map_id": 1062,
+    "map_name": "Red Desert Borderlands",
+    "is_wvw": true,
+    "duration_s": 256.0,
+    "start_datetime": "2026-04-19 16:01:21 UTC"
+  },
+  "agents": [
+    {
+      "name": "乌鸦",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 2370
+    },
+    {
+      "name": "袖珍肉食鸟",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1509
+    },
+    {
+      "name": "袖珍肉食鸟",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1509
+    },
+    {
+      "name": "袖珍肉食鸟",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1509
+    },
+    {
+      "name": "袖珍肉食鸟",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1509
+    },
+    {
+      "name": "袖珍肉食鸟",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1509
+    },
+    {
+      "name": "幻象除魔师",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "ch14653-741",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 2370
+    },
+    {
+      "name": "正义之剑",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "分身",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "分身",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "幻象狂战士",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "幻象狂战士",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "幻象剑客",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "幻象狂战士",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "幻象狂战士",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1875
+    },
+    {
+      "name": "袖珍肉食鸟",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 1509
+    },
+    {
+      "name": "林地猎犬",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 2370
+    },
+    {
+      "name": "魔径裂缝",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 0
+    },
+    {
+      "name": "修会探险家",
+      "account": "",
+      "profession": "NPC",
+      "is_player": false,
+      "team": 2370
+    }
+  ],
+  "players": [
+    {
+      "name": "夏尔扑猎人",
+      "account": "帅妹妹丶.8297",
+      "profession": "Mechanist",
+      "total_damage": 874618830,
+      "power_damage": 3179843,
+      "condi_damage": 871438987,
+      "breakbar_damage": 163191.0,
+      "own_downs": 1,
+      "own_deaths": 0,
+      "downs_inflicted": 1,
+      "kills_inflicted": 0,
+      "boon_strips": 8,
+      "condi_cleanses": 188,
+      "combat_time_ms": 255556,
+      "buff_uptime": {
+        "stability": 3.71,
+        "resistance": 3.12,
+        "protection": 3.71,
+        "swiftness": 10.52,
+        "fury": 5.51,
+        "might": 42.35,
+        "regeneration": 3.12,
+        "vigor": 6.25,
+        "aegis": 26.57,
+        "quickness": 4.0,
+        "alacrity": 4.27
+      }
+    },
+    {
+      "name": "布洛维亚",
+      "account": "良木历.1742",
+      "profession": "Scourge",
+      "total_damage": 535837269,
+      "power_damage": 2021633,
+      "condi_damage": 533815636,
+      "breakbar_damage": 23395.0,
+      "own_downs": 0,
+      "own_deaths": 0,
+      "downs_inflicted": 0,
+      "kills_inflicted": 0,
+      "boon_strips": 0,
+      "condi_cleanses": 149,
+      "combat_time_ms": 255556,
+      "buff_uptime": {
+        "stability": 20.17,
+        "resistance": 3.12,
+        "protection": 3.71,
+        "swiftness": 11.72,
+        "fury": 2.17,
+        "might": 28.52,
+        "regeneration": 5.55,
+        "vigor": 6.25,
+        "aegis": 46.31,
+        "quickness": 4.0,
+        "alacrity": 1.01
+      }
+    },
+    {
+      "name": "咚呲哒呲咚咚哒呲",
+      "account": "乡村音乐人.1364",
+      "profession": "Virtuoso",
+      "total_damage": 194544157,
+      "power_damage": 672514,
+      "condi_damage": 193871643,
+      "breakbar_damage": 1799.0,
+      "own_downs": 1,
+      "own_deaths": 1,
+      "downs_inflicted": 1,
+      "kills_inflicted": 1,
+      "boon_strips": 0,
+      "condi_cleanses": 111,
+      "combat_time_ms": 251201,
+      "buff_uptime": {
+        "stability": 37.82,
+        "resistance": 38.08,
+        "protection": 23.85,
+        "swiftness": 19.53,
+        "fury": 6.07,
+        "might": 34.47,
+        "regeneration": 26.67,
+        "vigor": 48.8,
+        "aegis": 42.27,
+        "quickness": 14.18,
+        "alacrity": 3.71
+      }
+    },
+    {
+      "name": "我直接加钟",
+      "account": "Doubface.5319",
+      "profession": "Holosmith",
+      "total_damage": 879369556,
+      "power_damage": 4995975,
+      "condi_damage": 874373581,
+      "breakbar_damage": 19064.0,
+      "own_downs": 0,
+      "own_deaths": 0,
+      "downs_inflicted": 0,
+      "kills_inflicted": 0,
+      "boon_strips": 0,
+      "condi_cleanses": 90,
+      "combat_time_ms": 255556,
+      "buff_uptime": {
+        "stability": 32.2,
+        "resistance": 3.12,
+        "protection": 2.22,
+        "swiftness": 21.13,
+        "fury": 4.65,
+        "might": 16.17,
+        "regeneration": 8.04,
+        "vigor": 6.25,
+        "aegis": 36.26,
+        "quickness": 4.0,
+        "alacrity": 0.62
+      }
+    },
+    {
+      "name": "焉逢困敦",
+      "account": "nonanme.2157",
+      "profession": "Mechanist",
+      "total_damage": 524462641,
+      "power_damage": 2801926,
+      "condi_damage": 521660715,
+      "breakbar_damage": 137245.0,
+      "own_downs": 1,
+      "own_deaths": 1,
+      "downs_inflicted": 1,
+      "kills_inflicted": 0,
+      "boon_strips": 0,
+      "condi_cleanses": 68,
+      "combat_time_ms": 251201,
+      "buff_uptime": {
+        "stability": 2.03,
+        "resistance": 2.71,
+        "protection": 18.75,
+        "swiftness": 5.71,
+        "fury": 11.6,
+        "might": 3.7,
+        "regeneration": 10.58,
+        "vigor": 1.17,
+        "aegis": 14.16,
+        "quickness": 2.22,
+        "alacrity": 2.03
+      }
+    },
+    {
+      "name": "Luies",
+      "account": "VANS.8130",
+      "profession": "Catalyst",
+      "total_damage": 535912865,
+      "power_damage": 4696259,
+      "condi_damage": 531216606,
+      "breakbar_damage": 46088.0,
+      "own_downs": 0,
+      "own_deaths": 0,
+      "downs_inflicted": 0,
+      "kills_inflicted": 1,
+      "boon_strips": 0,
+      "condi_cleanses": 74,
+      "combat_time_ms": 255556,
+      "buff_uptime": {
+        "stability": 11.37,
+        "resistance": 2.71,
+        "protection": 9.89,
+        "swiftness": 15.46,
+        "fury": 14.86,
+        "might": 4.03,
+        "regeneration": 8.09,
+        "vigor": 7.23,
+        "aegis": 48.45,
+        "quickness": 1.85,
+        "alacrity": 1.01
+      }
+    },
+    {
+      "name": "木木l幻",
+      "account": "月夜叹息.2407",
+      "profession": "Untamed",
+      "total_damage": 12084613,
+      "power_damage": 4709600,
+      "condi_damage": 7375013,
+      "breakbar_damage": 14845.0,
+      "own_downs": 1,
+      "own_deaths": 0,
+      "downs_inflicted": 0,
+      "kills_inflicted": 1,
+      "boon_strips": 0,
+      "condi_cleanses": 259,
+      "combat_time_ms": 255556,
+      "buff_uptime": {
+        "stability": 2.03,
+        "resistance": 2.71,
+        "protection": 4.3,
+        "swiftness": 14.48,
+        "fury": 37.5,
+        "might": 64.7,
+        "regeneration": 8.09,
+        "vigor": 27.3,
+        "aegis": 21.67,
+        "quickness": 2.22,
+        "alacrity": 2.03
+      }
+    },
+    {
+      "name": "洛美沙星",
+      "account": "洛美杀星.3095",
+      "profession": "Deadeye",
+      "total_damage": 525109769,
+      "power_damage": 701685,
+      "condi_damage": 524408084,
+      "breakbar_damage": 2449.0,
+      "own_downs": 1,
+      "own_deaths": 1,
+      "downs_inflicted": 1,
+      "kills_inflicted": 0,
+      "boon_strips": 0,
+      "condi_cleanses": 59,
+      "combat_time_ms": 119197,
+      "buff_uptime": {
+        "stability": 3.71,
+        "resistance": 3.12,
+        "protection": 3.71,
+        "swiftness": 3.91,
+        "fury": 2.17,
+        "might": 5.33,
+        "regeneration": 4.53,
+        "vigor": 23.58,
+        "aegis": 26.07,
+        "quickness": 4.0,
+        "alacrity": 3.71
+      }
+    },
+    {
+      "name": "卓然m",
+      "account": "如然丶.9183",
+      "profession": "Mirage",
+      "total_damage": 356351318,
+      "power_damage": 876604,
+      "condi_damage": 355474714,
+      "breakbar_damage": 5567.0,
+      "own_downs": 0,
+      "own_deaths": 0,
+      "downs_inflicted": 0,
+      "kills_inflicted": 0,
+      "boon_strips": 0,
+      "condi_cleanses": 44,
+      "combat_time_ms": 256557,
+      "buff_uptime": {
+        "stability": 47.86,
+        "resistance": 18.05,
+        "protection": 19.79,
+        "swiftness": 13.65,
+        "fury": 7.55,
+        "might": 19.26,
+        "regeneration": 27.53,
+        "vigor": 18.27,
+        "aegis": 22.48,
+        "quickness": 7.37,
+        "alacrity": 20.68
+      }
+    },
+    {
+      "name": "Dio灬荼菟er",
+      "account": "瞳瞳瞳丶.7125",
+      "profession": "Specter",
+      "total_damage": 352664185,
+      "power_damage": 615751,
+      "condi_damage": 352048434,
+      "breakbar_damage": 5221.0,
+      "own_downs": 2,
+      "own_deaths": 0,
+      "downs_inflicted": 0,
+      "kills_inflicted": 0,
+      "boon_strips": 0,
+      "condi_cleanses": 96,
+      "combat_time_ms": 255556,
+      "buff_uptime": {
+        "stability": 2.03,
+        "resistance": 37.66,
+        "protection": 27.92,
+        "swiftness": 27.71,
+        "fury": 14.91,
+        "might": 36.04,
+        "regeneration": 9.6,
+        "vigor": 21.59,
+        "aegis": 35.66,
+        "quickness": 20.44,
+        "alacrity": 0.62
+      }
+    }
+  ]
+}
