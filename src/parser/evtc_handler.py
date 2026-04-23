@@ -8,7 +8,7 @@ import os
 from datetime import datetime
 from typing import Dict, Any, Optional
 from src.core.logger import Logger
-from scripts.wvw_evtc_parser import ZevtcParser, detect_play_style, score_players
+from src.parser.wvw_evtc_parser import ZevtcParser, detect_play_style, score_players
 
 logger = Logger(__name__)
 
