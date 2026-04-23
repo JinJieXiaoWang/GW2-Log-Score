@@ -1,0 +1,41 @@
+/* ============================================
+   卡片组件样式
+   ============================================ */
+
+.base-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.base-card--shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.base-card--borderless {
+  border: none;
+}
+
+.base-card__header {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.base-card__body {
+  padding: var(--spacing-6);
+}
+
+.base-card__footer {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 1px solid var(--color-border-light);
+  background-color: var(--color-gray-50);
+}
+
+/* 紧凑模式 */
+.base-card--compact .base-card__header,
+.base-card--compact .base-card__body,
+.base-card--compact .base-card__footer {
+  padding: var(--spacing-3) var(--spacing-4);
+}

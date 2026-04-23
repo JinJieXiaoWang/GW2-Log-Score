@@ -1,0 +1,96 @@
+/* ============================================
+   表格组件样式
+   ============================================ */
+
+.base-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.base-table__header {
+  background-color: var(--color-gray-50);
+}
+
+.base-table__header-cell {
+  padding: var(--spacing-3) var(--spacing-6);
+  text-align: left;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.base-table__header-cell--sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.base-table__header-cell--sortable:hover {
+  background-color: var(--color-gray-100);
+}
+
+.base-table__sort-icon {
+  margin-left: var(--spacing-1);
+  opacity: 0.5;
+  transition: opacity var(--duration-normal);
+}
+
+.base-table__header-cell--sortable:hover .base-table__sort-icon {
+  opacity: 1;
+}
+
+.base-table__body-row {
+  transition: background-color var(--duration-fast);
+}
+
+.base-table__body-row:hover {
+  background-color: var(--color-gray-50);
+}
+
+.base-table__body-row--selected {
+  background-color: var(--color-primary-50);
+}
+
+.base-table__body-row--striped:nth-child(even) {
+  background-color: var(--color-gray-50);
+}
+
+.base-table__body-cell {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.base-table__body-cell--align-center {
+  text-align: center;
+}
+
+.base-table__body-cell--align-right {
+  text-align: right;
+}
+
+/* 加载状态 */
+.base-table--loading {
+  position: relative;
+}
+
+.base-table__loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+}
+
+/* 空状态 */
+.base-table__empty {
+  padding: var(--spacing-12);
+  text-align: center;
+  color: var(--color-text-tertiary);
+}

@@ -1,0 +1,9 @@
+# GW2 Log Score - Robots.txt
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Allow: /
+
+Sitemap: /sitemap.xml

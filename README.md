@@ -1,0 +1,121 @@
+# GW2 Log Score
+
+激战2日志解析与出勤评分系统
+
+## 项目结构
+
+```
+GW2-Log-Score/
+├── config/            # 配置文件
+├── databases/         # 数据库文件
+├── docs/              # 项目文档
+├── frontend/          # 前端代码
+├── logs/              # 日志文件
+├── scripts/           # 脚本工具
+├── src/               # 后端源码
+│   ├── api/           # API接口
+│   ├── config/        # 配置管理
+│   ├── core/          # 核心功能
+│   ├── database/      # 数据库操作
+│   ├── models/        # 数据模型
+│   ├── parser/        # 日志解析器
+│   ├── reports/       # 报表生成
+│   └── scoring/       # 评分系统
+├── tests/             # 测试文件
+└── uploads/           # 上传文件
+```
+
+## 功能特性
+
+- **多格式支持**：支持JSON和ZEVTC格式的日志文件
+- **WvW战斗分析**：专门针对WvW战斗进行分析和评分
+- **出勤管理**：记录和管理玩家出勤情况
+- **评分系统**：基于战斗表现对玩家进行评分
+- **数据可视化**：提供直观的数据展示界面
+- **API接口**：提供RESTful API接口供前端调用
+
+## 快速开始
+
+### 安装依赖
+
+```bash
+pip install -r requirements.txt
+```
+
+### 运行后端
+
+```bash
+python src/main.py
+```
+
+### 运行前端
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## 日志文件格式
+
+系统支持以下格式的日志文件：
+
+1. **JSON格式**：由EI（Encounter Insights）导出的data.json文件
+2. **ZEVTC格式**：arcdps生成的原生日志格式，支持压缩和非压缩版本
+
+## 解析流程
+
+1. 上传日志文件（JSON或ZEVTC格式）
+2. 系统自动识别文件格式并选择相应的解析器
+3. 解析战斗数据，提取玩家信息和战斗统计
+4. 计算玩家评分和出勤情况
+5. 存储数据到数据库
+6. 生成报表和可视化展示
+
+## 评分系统
+
+WvW评分基于以下因素：
+
+- **大团模式**：
+  - 有效伤害
+  - 破控伤害
+  - 存活能力
+  - 辅助能力（稳固覆盖率、抗性覆盖率、撕BUFF、清条件）
+
+- **毒瘤模式**：
+  - 击杀数
+  - 存活时间
+  - 击倒敌人数
+  - 存活能力
+
+## API接口
+
+- `POST /api/upload` - 上传日志文件
+- `GET /api/players` - 获取玩家列表
+- `GET /api/attendance` - 获取出勤记录
+- `GET /api/scores` - 获取评分数据
+
+## 开发指南
+
+### 代码风格
+
+项目使用以下代码风格工具：
+- **black**：代码格式化
+- **isort**：导入排序
+- **flake8**：代码质量检查
+
+### 测试
+
+运行测试：
+
+```bash
+python -m pytest tests/
+```
+
+## 贡献
+
+欢迎提交Issue和Pull Request！
+
+## 许可证
+
+MIT License
