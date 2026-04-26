@@ -1,0 +1,148 @@
+{
+  "_documentation": {
+    "description": "GW2职业数据统一配置文件",
+    "version": "1.0.0",
+    "last_updated": "2025-01-01",
+    "maintainer": "GW2 Log Score Team",
+    "_usage": "此文件为职业数据的唯一真实来源，前后端共享",
+    "_structure": {
+      "professions": "职业数组，包含所有核心职业和精英特长",
+      "name": "职业英文标识符（唯一键）",
+      "colors": "UI显示颜色配置",
+      "core": "职业核心配置（elite specialization 特有）",
+      "types": "角色类型（可能是多个）",
+      "defaultRole": "默认角色类型"
+    }
+  },
+
+  "roles": {
+    "DPS": {"name": "DPS", "priority": 1},
+    "SUPPORT": {"name": "SUPPORT", "priority": 2},
+    "HEALING": {"name": "HEALING", "priority": 3},
+    "CONDITION": {"name": "CONDITION", "priority": 4},
+    "UTILITY": {"name": "UTILITY", "priority": 5}
+  },
+
+  "professionColors": {
+    "Guardian": {"bg": "bg-yellow-100", "text": "text-yellow-800"},
+    "Warrior": {"bg": "bg-red-100", "text": "text-red-800"},
+    "Engineer": {"bg": "bg-orange-100", "text": "text-orange-800"},
+    "Ranger": {"bg": "bg-green-100", "text": "text-green-800"},
+    "Thief": {"bg": "bg-gray-200", "text": "text-gray-800"},
+    "Elementalist": {"bg": "bg-cyan-100", "text": "text-cyan-800"},
+    "Mesmer": {"bg": "bg-purple-100", "text": "text-purple-800"},
+    "Necromancer": {"bg": "bg-gray-300", "text": "text-gray-900"},
+    "Revenant": {"bg": "bg-indigo-100", "text": "text-indigo-800"}
+  },
+
+  "professions": [
+    {
+      "name": "Guardian",
+      "colors": {"bg": "bg-yellow-100", "text": "text-yellow-800"},
+      "defaultRole": "SUPPORT",
+      "icon": "shield",
+      "specializations": {
+        "Dragonhunter": {"types": ["DPS"], "description": "Dragonhunter provides strong ranged DPS with crossbow and defensive traps."},
+        "Firebrand": {"types": ["SUPPORT"], "description": "Firebrand offers powerful team support with tomes and quickness."},
+        "Willbender": {"types": ["DPS"], "description": "Willbender delivers fast melee DPS with scimitar and active virtues."},
+        "Luminary": {"types": ["SUPPORT"], "description": "Luminary provides hybrid support with radiant fire and light mechanics."}
+      }
+    },
+    {
+      "name": "Warrior",
+      "colors": {"bg": "bg-red-100", "text": "text-red-800"},
+      "defaultRole": "DPS",
+      "icon": "sword",
+      "specializations": {
+        "Berserker": {"types": ["DPS"], "description": "Berserker unleashes burst damage with dual daggers and rage overload."},
+        "Spellbreaker": {"types": ["DPS"], "description": "Spellbreaker counters enemy spells with meditation and full counter skills."},
+        "Bladesworn": {"types": ["DPS"], "description": "Bladesworn combines melee with dragon slash and gunnery systems."},
+        "Paragon": {"types": ["SUPPORT"], "description": "Paragon provides team support with dragon hunter-like protective chants."}
+      }
+    },
+    {
+      "name": "Engineer",
+      "colors": {"bg": "bg-orange-100", "text": "text-orange-800"},
+      "defaultRole": "DPS",
+      "icon": "toolkit",
+      "specializations": {
+        "Scrapper": {"types": ["SUPPORT"], "description": "Scrapper offers team support with hammer and fountain gyros."},
+        "Holosmith": {"types": ["DPS"], "description": "Holosmith deals high DPS with photon forge and sword skills."},
+        "Mechanist": {"types": ["SUPPORT"], "description": "Mechanist provides ranged support with mech and rifle."},
+        "Amalgam": {"types": ["DPS"], "description": "Amalgam combines alchemy and machinery for versatile combat."}
+      }
+    },
+    {
+      "name": "Ranger",
+      "colors": {"bg": "bg-green-100", "text": "text-green-800"},
+      "defaultRole": "DPS",
+      "icon": "bow",
+      "specializations": {
+        "Druid": {"types": ["HEALING"], "description": "Druid provides potent healing with celestial form and warhorn."},
+        "Soulbeast": {"types": ["DPS"], "description": "Soulbeast merges with pet for melee DPS with longbow."},
+        "Untamed": {"types": ["DPS"], "description": "Untamed unleashes beast instincts with hammer and unleashed mechanics."},
+        "Galeshot": {"types": ["DPS"], "description": "Galeshot provides ranged DPS with whirlwind bow and arrow resources."}
+      }
+    },
+    {
+      "name": "Thief",
+      "colors": {"bg": "bg-gray-200", "text": "text-gray-800"},
+      "defaultRole": "DPS",
+      "icon": "dagger",
+      "specializations": {
+        "Daredevil": {"types": ["DPS"], "description": "Daredevil excels in melee with staff and extra rolls."},
+        "Deadeye": {"types": ["DPS"], "description": "Deadeye provides precision rifle damage with mark system."},
+        "Specter": {"types": "SUPPORT", "description": "Specter offers support with shadow scepter and barrier skills."},
+        "Antiquary": {"types": ["DPS"], "description": "Antiquary blends historical artifacts with deceptive combat techniques."}
+      }
+    },
+    {
+      "name": "Elementalist",
+      "colors": {"bg": "bg-cyan-100", "text": "text-cyan-800"},
+      "defaultRole": "DPS",
+      "icon": "element",
+      "specializations": {
+        "Tempest": {"types": ["SUPPORT"], "description": "Tempest provides team support with warhorn overloads."},
+        "Weaver": {"types": ["DPS"], "description": "Weaver deals high DPS with dual sword and stance skills."},
+        "Catalyst": {"types": ["DPS"], "description": "Catalyst offers DPS with hammer and orb buffs."},
+        "Evoker": {"types": ["HEALING"], "description": "Evoker provides healing with spirit minions and nature magic."}
+      }
+    },
+    {
+      "name": "Mesmer",
+      "colors": {"bg": "bg-purple-100", "text": "text-purple-800"},
+      "defaultRole": "SUPPORT",
+      "icon": "clone",
+      "specializations": {
+        "Chronomancer": {"types": ["SUPPORT"], "description": "Chronomancer provides team support with shield and continuum split."},
+        "Mirage": {"types": ["DPS"], "description": "Mirage deals ambush DPS with axe and illusion cloak."},
+        "Virtuoso": {"types": ["DPS"], "description": "Virtuoso provides ranged DPS with mental daggers."},
+        "Troubadour": {"types": ["SUPPORT"], "description": "Troubadour offers support with harp and note-based magic."}
+      }
+    },
+    {
+      "name": "Necromancer",
+      "colors": {"bg": "bg-gray-300", "text": "text-gray-900"},
+      "defaultRole": "DPS",
+      "icon": "death",
+      "specializations": {
+        "Reaper": {"types": ["DPS"], "description": "Reaper delivers melee DPS with greatsword and shroud."},
+        "Scourge": {"types": ["SUPPORT"], "description": "Scourge provides support with torch and sand barriers."},
+        "Harbinger": {"types": ["DPS"], "description": "Harbinger deals ranged DPS with pistol and reagent skills."},
+        "Ritualist": {"types": ["SUPPORT"], "description": "Ritualist offers support with spirit summoning and rituals."}
+      }
+    },
+    {
+      "name": "Revenant",
+      "colors": {"bg": "bg-indigo-100", "text": "text-indigo-800"},
+      "defaultRole": "SUPPORT",
+      "icon": "spirit",
+      "specializations": {
+        "Herald": {"types": ["SUPPORT"], "description": "Herald provides support with dragon stance and facet skills."},
+        "Renegade": {"types": ["DPS"], "description": "Renegade deals DPS with krait-like legendary stance."},
+        "Vindicator": {"types": ["DPS"], "description": "Vindicator delivers melee DPS with greatsword and dodge mechanics."},
+        "Conduit": {"types": ["SUPPORT"], "description": "Conduit offers support with cosmic energy and pact skills."}
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "1110": {
+    "name": "Throw Gunk",
+    "icon_path": "resources/icons/skills/1110_Throw_Gunk.png",
+    "icon_url": "https://render.guildwars2.com/file/3A487770D4A0E006D0A0E57C68A639BF7003A5BC/102940.png"
+  },
+  "1115": {
+    "name": "Branch Leap",
+    "icon_path": "resources/icons/skills/1115_Branch_Leap.png",
+    "icon_url": "https://render.guildwars2.com/file/15E0A1080FE0AE70ABD305F4DD045139F1216C37/102945.png"
+  },
+  "1118": {
+    "name": "Throw Chain",
+    "icon_path": "resources/icons/skills/1118_Throw_Chain.png",
+    "icon_url": "https://render.guildwars2.com/file/07364259014FCB3F01C7F31808C140720DACC70A/102946.png"
+  }
+}

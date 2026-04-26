@@ -1,0 +1,983 @@
+{
+  "_documentation": {
+    "description": "GW2评分规则统一配置文件",
+    "version": "1.1-WvW-大团专属",
+    "last_updated": "2025-01-01",
+    "maintainer": "GW2 Log Score Team",
+    "_usage": "此文件为评分规则的唯一真实来源，支持按职业-专精定制评分规则",
+    "_structure": {
+      "version": "评分规则版本号，用于版本追踪",
+      "mode": "游戏模式：WvW / PVE",
+      "profession_specialization_rules": "职业-专精级别的详细评分规则",
+      "fallback_role_rules": "未匹配职业-专精时的角色级别默认规则"
+    },
+    "_maintenance_guide": {
+      "添加新规则": "在 profession_specialization_rules 下添加新的职业-专精键",
+      "修改权重": "直接修改对应规则中的 dimension_weights",
+      "修改数据源": "修改对应规则中的 data_source 映射",
+      "游戏版本更新": "通常只需调整权重或添加/移除评分维度"
+    }
+  },
+
+  "version": "1.1-WvW-大团专属",
+
+  "mode": "WvW",
+
+  "default_threshold": 80,
+
+  "dimension_definitions": {
+    "stability_uptime": {
+      "name": "稳固覆盖率",
+      "description": "稳固(Stability)buff的覆盖率百分比",
+      "data_field": "buffUptimes[Stability]",
+      "value_range": [0, 100],
+      "normalization": "percentage"
+    },
+    "resistance_uptime": {
+      "name": "抗性覆盖率",
+      "description": "抗性(Resistance)buff的覆盖率百分比",
+      "data_field": "buffUptimes[Resistance]",
+      "value_range": [0, 100],
+      "normalization": "percentage"
+    },
+    "swiftness_uptime": {
+      "name": "急速覆盖率",
+      "description": "急速(Swiftness)buff的覆盖率百分比",
+      "data_field": "buffUptimes[Swiftness]",
+      "value_range": [0, 100],
+      "normalization": "percentage"
+    },
+    "regeneration_uptime": {
+      "name": "再生覆盖率",
+      "description": "再生(Regeneration)buff的覆盖率百分比",
+      "data_field": "buffUptimes[Regeneration]",
+      "value_range": [0, 100],
+      "normalization": "percentage"
+    },
+    "cleanses": {
+      "name": "清症次数",
+      "description": "清除症状的次数",
+      "data_field": "cleanses",
+      "value_range": [0, null],
+      "normalization": "relative_to_average",
+      "unit": "次"
+    },
+    "strips": {
+      "name": "削增益次数",
+      "description": "剥离敌方增益的次数",
+      "data_field": "strippedBuffs",
+      "value_range": [0, null],
+      "normalization": "relative_to_average",
+      "unit": "次"
+    },
+    "breakbar_damage": {
+      "name": "破控/控制次数",
+      "description": "breakbar伤害和控制技能命中次数",
+      "data_field": "breakbarDamage",
+      "value_range": [0, null],
+      "normalization": "relative_to_average",
+      "unit": "次"
+    },
+    "healing_done": {
+      "name": "治疗量",
+      "description": "提供的总治疗量",
+      "data_field": "healingDone",
+      "value_range": [0, null],
+      "normalization": "relative_to_average",
+      "unit": "点"
+    },
+    "damage_taken": {
+      "name": "承伤量",
+      "description": "受到的伤害（越低越好）",
+      "data_field": "damageTaken",
+      "value_range": [0, null],
+      "normalization": "inverse_relative_to_average",
+      "unit": "点"
+    },
+    "damage_per_second": {
+      "name": "有效伤害/秒伤",
+      "description": "每秒造成的有效伤害",
+      "data_field": "damageTargetPerSecond",
+      "value_range": [0, null],
+      "normalization": "relative_to_average",
+      "unit": "伤害/秒"
+    },
+    "trap_and_insignia_damage_ratio": {
+      "name": "陷阱/符印伤害占比",
+      "description": "陷阱和符印技能造成的伤害占总伤害的比例",
+      "data_field": "trapInsigniaDamageRatio",
+      "value_range": [0, 100],
+      "normalization": "percentage",
+      "unit": "%"
+    },
+    "spear_skill_damage_ratio": {
+      "name": "长矛组技能伤害占比",
+      "description": "长矛技能造成的伤害占总伤害的比例",
+      "data_field": "spearSkillDamageRatio",
+      "value_range": [0, 100],
+      "normalization": "percentage",
+      "unit": "%"
+    },
+    "survival_score": {
+      "name": "生存表现",
+      "description": "基于死亡和倒地的生存评分",
+      "data_field": "deaths,downs",
+      "calculation": "100 - (deaths * 20 + downs * 10)",
+      "value_range": [0, 100],
+      "normalization": "fixed"
+    },
+    "debuff_uptime": {
+      "name": "易伤覆盖率",
+      "description": "易伤(Vulnerability)debuff的覆盖率",
+      "data_field": "debuffUptimes[Vulnerability]",
+      "value_range": [0, 100],
+      "normalization": "percentage"
+    },
+    "negated_attacks": {
+      "name": "控制次数",
+      "description": "通过控制技能无效化敌方攻击的次数",
+      "data_field": "negatedAttacks",
+      "value_range": [0, null],
+      "normalization": "relative_to_average",
+      "unit": "次"
+    },
+    "group_hit_efficiency": {
+      "name": "群体命中效率",
+      "description": "技能命中敌人数占可命中人数的比例",
+      "data_field": "groupHitEfficiency",
+      "value_range": [0, 100],
+      "normalization": "percentage",
+      "unit": "%"
+    }
+  },
+
+  "profession_specialization_rules": {
+    "Revenant-Vindicator-Demon": {
+      "profession": "Revenant",
+      "specialization": "Vindicator",
+      "stance": "Demon",
+      "display_name": "魂武者-裁决(恶魔)",
+      "role": "承伤削控辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "resistance_uptime": 25,
+        "breakbar_damage": 20,
+        "damage_taken": 15,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "breakbar_damage": "strippedBuffs + breakbarDamage",
+        "damage_taken": "damageTaken",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Revenant-Vindicator-Centaur": {
+      "profession": "Revenant",
+      "specialization": "Vindicator",
+      "stance": "Centaur",
+      "display_name": "魂武者-裁决(人马)",
+      "role": "承伤治疗辅助",
+      "dimension_weights": {
+        "stability_uptime": 25,
+        "resistance_uptime": 20,
+        "healing_done": 25,
+        "damage_taken": 15,
+        "survival_score": 15
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "healing_done": "healingDone",
+        "damage_taken": "damageTaken",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Mesmer-Chronomancer": {
+      "profession": "Mesmer",
+      "specialization": "Chronomancer",
+      "display_name": "幻术师-时空术士",
+      "role": "核心增益辅助",
+      "dimension_weights": {
+        "stability_uptime": 40,
+        "resistance_uptime": 25,
+        "swiftness_uptime": 20,
+        "cleanses": 10,
+        "survival_score": 5
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "swiftness_uptime": "buffUptimes[Swiftness]",
+        "cleanses": "cleanses",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Mesmer-Troubadour": {
+      "profession": "Mesmer",
+      "specialization": "Troubadour",
+      "display_name": "幻术师-吟游诗人",
+      "role": "治疗增益辅助",
+      "dimension_weights": {
+        "healing_done": 35,
+        "stability_uptime": 25,
+        "resistance_uptime": 15,
+        "cleanses": 15,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "healing_done": "healingDone",
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "cleanses": "cleanses",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Ranger-Druid": {
+      "profession": "Ranger",
+      "specialization": "Druid",
+      "display_name": "游侠-德鲁伊",
+      "role": "核心治疗辅助",
+      "dimension_weights": {
+        "healing_done": 40,
+        "cleanses": 25,
+        "regeneration_uptime": 20,
+        "stability_uptime": 10,
+        "survival_score": 5
+      },
+      "data_sources": {
+        "healing_done": "healingDone",
+        "cleanses": "cleanses",
+        "regeneration_uptime": "buffUptimes[Regeneration]",
+        "stability_uptime": "buffUptimes[Stability]",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Necromancer-Scourge": {
+      "profession": "Necromancer",
+      "specialization": "Scourge",
+      "display_name": "唤灵师-灾厄师",
+      "role": "削控增伤辅助",
+      "dimension_weights": {
+        "strips": 35,
+        "breakbar_damage": 25,
+        "debuff_uptime": 20,
+        "cleanses": 10,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "strips": "strippedBuffs",
+        "breakbar_damage": "breakbarDamage",
+        "debuff_uptime": "debuffUptimes[Vulnerability]",
+        "cleanses": "cleanses",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Engineer-Holosmith": {
+      "profession": "Engineer",
+      "specialization": "Holosmith",
+      "display_name": "工程师-全息师",
+      "role": "大团输出",
+      "dimension_weights": {
+        "damage_per_second": 45,
+        "breakbar_damage": 25,
+        "survival_score": 20,
+        "group_hit_efficiency": 10
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)",
+        "group_hit_efficiency": "groupHitEfficiency"
+      }
+    },
+
+    "Guardian-Dragonhunter-Hammer": {
+      "profession": "Guardian",
+      "specialization": "Dragonhunter",
+      "weapon": "Hammer",
+      "display_name": "守护-猎龙者-大锤",
+      "role": "大团爆发输出",
+      "dimension_weights": {
+        "damage_per_second": 45,
+        "trap_and_insignia_damage_ratio": 25,
+        "breakbar_damage": 20,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "trap_and_insignia_damage_ratio": "trapInsigniaDamageRatio",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Guardian-Dragonhunter-SwordSpear": {
+      "profession": "Guardian",
+      "specialization": "Dragonhunter",
+      "weapon": "SwordSpear",
+      "display_name": "守护-猎龙者-矛剑",
+      "role": "大团控制输出",
+      "dimension_weights": {
+        "damage_per_second": 35,
+        "breakbar_damage": 35,
+        "spear_skill_damage_ratio": 20,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "spear_skill_damage_ratio": "spearSkillDamageRatio",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Warrior-Paragon": {
+      "profession": "Warrior",
+      "specialization": "Paragon",
+      "display_name": "战士-圣言士",
+      "role": "增益治疗辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "resistance_uptime": 25,
+        "cleanses": 20,
+        "healing_done": 15,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "cleanses": "cleanses",
+        "healing_done": "healingDone",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Guardian-Dragonhunter": {
+      "profession": "Guardian",
+      "specialization": "Dragonhunter",
+      "display_name": "守护-猎龙者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 45,
+        "breakbar_damage": 25,
+        "survival_score": 20,
+        "group_hit_efficiency": 10
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)",
+        "group_hit_efficiency": "groupHitEfficiency"
+      }
+    },
+
+    "Guardian-Firebrand": {
+      "profession": "Guardian",
+      "specialization": "Firebrand",
+      "display_name": "守护-燃火者",
+      "role": "辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "resistance_uptime": 25,
+        "cleanses": 20,
+        "healing_done": 15,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "cleanses": "cleanses",
+        "healing_done": "healingDone",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Guardian-Willbender": {
+      "profession": "Guardian",
+      "specialization": "Willbender",
+      "display_name": "守护-破锋者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 45,
+        "breakbar_damage": 25,
+        "survival_score": 20,
+        "group_hit_efficiency": 10
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)",
+        "group_hit_efficiency": "groupHitEfficiency"
+      }
+    },
+
+    "Guardian-Luminary": {
+      "profession": "Guardian",
+      "specialization": "Luminary",
+      "display_name": "守护-圣辉者",
+      "role": "辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "resistance_uptime": 25,
+        "cleanses": 20,
+        "healing_done": 15,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "cleanses": "cleanses",
+        "healing_done": "healingDone",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Warrior-Berserker": {
+      "profession": "Warrior",
+      "specialization": "Berserker",
+      "display_name": "战士-狂战士",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Warrior-Spellbreaker": {
+      "profession": "Warrior",
+      "specialization": "Spellbreaker",
+      "display_name": "战士-破法者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 40,
+        "strips": 30,
+        "breakbar_damage": 20,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "strips": "strippedBuffs",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Warrior-Bladesworn": {
+      "profession": "Warrior",
+      "specialization": "Bladesworn",
+      "display_name": "战士-誓剑士",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Engineer-Scrapper": {
+      "profession": "Engineer",
+      "specialization": "Scrapper",
+      "display_name": "工程师-机械师",
+      "role": "辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "cleanses": 25,
+        "breakbar_damage": 20,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "cleanses": "cleanses",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Engineer-Mechanist": {
+      "profession": "Engineer",
+      "specialization": "Mechanist",
+      "display_name": "工程师-玉偃师",
+      "role": "辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "resistance_uptime": 25,
+        "cleanses": 20,
+        "healing_done": 15,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "cleanses": "cleanses",
+        "healing_done": "healingDone",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Engineer-Amalgam": {
+      "profession": "Engineer",
+      "specialization": "Amalgam",
+      "display_name": "工程师-流金师",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Ranger-Soulbeast": {
+      "profession": "Ranger",
+      "specialization": "Soulbeast",
+      "display_name": "游侠-魂兽师",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Ranger-Untamed": {
+      "profession": "Ranger",
+      "specialization": "Untamed",
+      "display_name": "游侠-狂兽师",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Ranger-Galeshot": {
+      "profession": "Ranger",
+      "specialization": "Galeshot",
+      "display_name": "游侠-风行者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Thief-Daredevil": {
+      "profession": "Thief",
+      "specialization": "Daredevil",
+      "display_name": "潜行者-独行侠",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Thief-Deadeye": {
+      "profession": "Thief",
+      "specialization": "Deadeye",
+      "display_name": "潜行者-神枪手",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Thief-Specter": {
+      "profession": "Thief",
+      "specialization": "Specter",
+      "display_name": "潜行者-缚影者",
+      "role": "辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "cleanses": 25,
+        "healing_done": 20,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "cleanses": "cleanses",
+        "healing_done": "healingDone",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Thief-Antiquary": {
+      "profession": "Thief",
+      "specialization": "Antiquary",
+      "display_name": "潜行者-彩戏师",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Elementalist-Tempest": {
+      "profession": "Elementalist",
+      "specialization": "Tempest",
+      "display_name": "元素使-风暴使",
+      "role": "辅助",
+      "dimension_weights": {
+        "swiftness_uptime": 30,
+        "resistance_uptime": 25,
+        "cleanses": 20,
+        "healing_done": 15,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "swiftness_uptime": "buffUptimes[Swiftness]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "cleanses": "cleanses",
+        "healing_done": "healingDone",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Elementalist-Weaver": {
+      "profession": "Elementalist",
+      "specialization": "Weaver",
+      "display_name": "元素使-编织者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Elementalist-Catalyst": {
+      "profession": "Elementalist",
+      "specialization": "Catalyst",
+      "display_name": "元素使-催化者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Elementalist-Evoker": {
+      "profession": "Elementalist",
+      "specialization": "Evoker",
+      "display_name": "元素使-唤法者",
+      "role": "治疗",
+      "dimension_weights": {
+        "healing_done": 40,
+        "cleanses": 25,
+        "regeneration_uptime": 20,
+        "survival_score": 15
+      },
+      "data_sources": {
+        "healing_done": "healingDone",
+        "cleanses": "cleanses",
+        "regeneration_uptime": "buffUptimes[Regeneration]",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Mesmer-Mirage": {
+      "profession": "Mesmer",
+      "specialization": "Mirage",
+      "display_name": "幻术师-幻象师",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Mesmer-Virtuoso": {
+      "profession": "Mesmer",
+      "specialization": "Virtuoso",
+      "display_name": "幻术师- virtuoso",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Necromancer-Reaper": {
+      "profession": "Necromancer",
+      "specialization": "Reaper",
+      "display_name": "唤灵师-夺魂者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Necromancer-Harbinger": {
+      "profession": "Necromancer",
+      "specialization": "Harbinger",
+      "display_name": "唤灵师-先驱者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Necromancer-Ritualist": {
+      "profession": "Necromancer",
+      "specialization": "Ritualist",
+      "display_name": "唤灵师-仪式师",
+      "role": "辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "cleanses": 25,
+        "healing_done": 20,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "cleanses": "cleanses",
+        "healing_done": "healingDone",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Revenant-Herald": {
+      "profession": "Revenant",
+      "specialization": "Herald",
+      "display_name": "魂武者-传令使",
+      "role": "辅助",
+      "dimension_weights": {
+        "stability_uptime": 35,
+        "resistance_uptime": 30,
+        "cleanses": 20,
+        "survival_score": 15
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "cleanses": "cleanses",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Revenant-Renegade": {
+      "profession": "Revenant",
+      "specialization": "Renegade",
+      "display_name": "魂武者-叛逆者",
+      "role": "输出",
+      "dimension_weights": {
+        "damage_per_second": 50,
+        "breakbar_damage": 25,
+        "survival_score": 25
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+
+    "Revenant-Conduit": {
+      "profession": "Revenant",
+      "specialization": "Conduit",
+      "display_name": "魂武者-传导者",
+      "role": "辅助",
+      "dimension_weights": {
+        "stability_uptime": 30,
+        "resistance_uptime": 25,
+        "cleanses": 20,
+        "healing_done": 15,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "cleanses": "cleanses",
+        "healing_done": "healingDone",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    }
+  },
+
+  "fallback_role_rules": {
+    "DPS": {
+      "dimension_weights": {
+        "damage_per_second": 60,
+        "survival_score": 20,
+        "breakbar_damage": 20
+      },
+      "data_sources": {
+        "damage_per_second": "damageTargetPerSecond",
+        "survival_score": "100 - (deaths * 20 + downs * 10)",
+        "breakbar_damage": "breakbarDamage"
+      }
+    },
+    "SUPPORT": {
+      "dimension_weights": {
+        "stability_uptime": 20,
+        "resistance_uptime": 15,
+        "swiftness_uptime": 15,
+        "cleanses": 20,
+        "strips": 20,
+        "survival_score": 10
+      },
+      "data_sources": {
+        "stability_uptime": "buffUptimes[Stability]",
+        "resistance_uptime": "buffUptimes[Resistance]",
+        "swiftness_uptime": "buffUptimes[Swiftness]",
+        "cleanses": "cleanses",
+        "strips": "strips",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+    "UTILITY": {
+      "dimension_weights": {
+        "strips": 30,
+        "cleanses": 30,
+        "breakbar_damage": 20,
+        "survival_score": 20
+      },
+      "data_sources": {
+        "strips": "strippedBuffs",
+        "cleanses": "cleanses",
+        "breakbar_damage": "breakbarDamage",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    },
+    "HEALING": {
+      "dimension_weights": {
+        "healing_done": 40,
+        "cleanses": 25,
+        "regeneration_uptime": 20,
+        "survival_score": 15
+      },
+      "data_sources": {
+        "healing_done": "healingDone",
+        "cleanses": "cleanses",
+        "regeneration_uptime": "buffUptimes[Regeneration]",
+        "survival_score": "100 - (deaths * 20 + downs * 10)"
+      }
+    }
+  },
+
+  "squad_size_rules": {
+    "small_squad_threshold": 20,
+    "small_squad_modifiers": {
+      "DPS": {
+        "damage_per_second": 80,
+        "survival_score": 10,
+        "breakbar_damage": 10
+      }
+    }
+  },
+
+  "normalization_rules": {
+    "relative_to_average": {
+      "description": "相对于团队平均值的标准化",
+      "formula": "clamp((player_value / team_average) * 100, 0, 100)"
+    },
+    "inverse_relative_to_average": {
+      "description": "相对于团队平均值的反向标准化（值越低分数越高）",
+      "formula": "clamp((team_average / player_value) * 100, 0, 100)"
+    },
+    "percentage": {
+      "description": "直接使用百分比值",
+      "formula": "clamp(value, 0, 100)"
+    },
+    "fixed": {
+      "description": "固定计算公式，不做标准化",
+      "formula": "直接使用计算结果"
+    }
+  }
+}

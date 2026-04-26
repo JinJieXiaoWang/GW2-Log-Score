@@ -1,0 +1,3 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/JinJieXiaoWang/GW2-Log-Score-Frontend.git

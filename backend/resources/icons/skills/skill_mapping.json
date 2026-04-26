@@ -1,0 +1,502 @@
+{
+  "1110": {
+    "name": "Throw Gunk",
+    "icon_path": "resources/icons/skills\\1110_Throw Gunk.png",
+    "icon_url": "https://render.guildwars2.com/file/3A487770D4A0E006D0A0E57C68A639BF7003A5BC/102940.png"
+  },
+  "1115": {
+    "name": "Branch Leap",
+    "icon_path": "resources/icons/skills\\1115_Branch Leap.png",
+    "icon_url": "https://render.guildwars2.com/file/15E0A1080FE0AE70ABD305F4DD045139F1216C37/102945.png"
+  },
+  "1118": {
+    "name": "Throw Chain",
+    "icon_path": "resources/icons/skills\\1118_Throw Chain.png",
+    "icon_url": "https://render.guildwars2.com/file/07364259014FCB3F01C7F31808C140720DACC70A/102946.png"
+  },
+  "1123": {
+    "name": "Consume Plasma",
+    "icon_path": "resources/icons/skills\\1123_Consume Plasma.png",
+    "icon_url": "https://render.guildwars2.com/file/BED8F4C37CA1D040CEA5381E082E155DB5D295F7/102949.png"
+  },
+  "1125": {
+    "name": "Eat Egg",
+    "icon_path": "resources/icons/skills\\1125_Eat Egg.png",
+    "icon_url": "https://render.guildwars2.com/file/23A3644A7C25F9ACCD64C00AE90858C2C2F2A61C/102934.png"
+  },
+  "1129": {
+    "name": "Ice Shard Stab",
+    "icon_path": "resources/icons/skills\\1129_Ice Shard Stab.png",
+    "icon_url": "https://render.guildwars2.com/file/53CFF0A54AD6FC3C6959722DCF2B9AB2C1ADF754/102953.png"
+  },
+  "1131": {
+    "name": "Mace Head Crack",
+    "icon_path": "resources/icons/skills\\1131_Mace Head Crack.png",
+    "icon_url": "https://render.guildwars2.com/file/EA28344BCD136298D5011EF553763C097C0A09E0/102955.png"
+  },
+  "1139": {
+    "name": "Healing Seed",
+    "icon_path": "resources/icons/skills\\1139_Healing Seed.png",
+    "icon_url": "https://render.guildwars2.com/file/C9052DC9C2AF805EC14C903D5EA0536E0A1A243F/102961.png"
+  },
+  "1141": {
+    "name": "Skull Fear",
+    "icon_path": "resources/icons/skills\\1141_Skull Fear.png",
+    "icon_url": "https://render.guildwars2.com/file/44B30CD10A3AA30A80A7A64CE2EF0B942CFF9BFF/102963.png"
+  },
+  "1148": {
+    "name": "Blinding Tuft",
+    "icon_path": "resources/icons/skills\\1148_Blinding Tuft.png",
+    "icon_url": "https://render.guildwars2.com/file/08956AFCA1FECE4E5F28A17CA068A2A134A697E5/102970.png"
+  },
+  "1162": {
+    "name": "Whirling Axe",
+    "icon_path": "resources/icons/skills\\1162_Whirling Axe.png",
+    "icon_url": "https://render.guildwars2.com/file/ACBF2C0EE9B64FCF12BBA443D16A08256C07B7E0/102941.png"
+  },
+  "1167": {
+    "name": "Whirling Strike",
+    "icon_path": "resources/icons/skills\\1167_Whirling Strike.png",
+    "icon_url": "https://render.guildwars2.com/file/3B72CF3E16A70F730DF1F897565A50147A4FCF7A/103490.png"
+  },
+  "1175": {
+    "name": "Bandage",
+    "icon_path": "resources/icons/skills\\1175_Bandage.png",
+    "icon_url": "https://render.guildwars2.com/file/D2D7D11874060D68760BFD519CFC77B6DF14981F/102928.png"
+  },
+  "1279": {
+    "name": "Binding Roots",
+    "icon_path": "resources/icons/skills\\1279_Binding Roots.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1355": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\1355_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1359": {
+    "name": "Flurry",
+    "icon_path": "resources/icons/skills\\1359_Flurry.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1364": {
+    "name": "Whirlwind",
+    "icon_path": "resources/icons/skills\\1364_Whirlwind.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1408": {
+    "name": "Galloping Slash",
+    "icon_path": "resources/icons/skills\\1408_Galloping Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1510": {
+    "name": "Dual Attack",
+    "icon_path": "resources/icons/skills\\1510_Dual Attack.png",
+    "icon_url": "https://render.guildwars2.com/file/FBD00439223B4710B62E5EBE5EC1293E9B070E45/103041.png"
+  },
+  "1512": {
+    "name": "Shoot",
+    "icon_path": "resources/icons/skills\\1512_Shoot.png",
+    "icon_url": "https://render.guildwars2.com/file/55AE93040FAA580E46FD9DF6CB09195232F3DA1C/102923.png"
+  },
+  "1531": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\1531_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/026978767419B72B1B75C20E97FA0CE0341EA4F2/103031.png"
+  },
+  "1539": {
+    "name": "Stab",
+    "icon_path": "resources/icons/skills\\1539_Stab.png",
+    "icon_url": "https://render.guildwars2.com/file/4CF36C6EF1F0FF18484518D57233E1AFEA3B3669/103045.png"
+  },
+  "1541": {
+    "name": "Leap",
+    "icon_path": "resources/icons/skills\\1541_Leap.png",
+    "icon_url": "https://render.guildwars2.com/file/73E76567754BC1703112D95A4898292D6A422D61/102922.png"
+  },
+  "1626": {
+    "name": "Throw",
+    "icon_path": "resources/icons/skills\\1626_Throw.png",
+    "icon_url": "https://render.guildwars2.com/file/C8273DFCA6FBA9D1E735112DDD05D8610D2148F7/103059.png"
+  },
+  "1628": {
+    "name": "Skull Bolas",
+    "icon_path": "resources/icons/skills\\1628_Skull Bolas.png",
+    "icon_url": "https://render.guildwars2.com/file/C8273DFCA6FBA9D1E735112DDD05D8610D2148F7/103059.png"
+  },
+  "1629": {
+    "name": "Stab",
+    "icon_path": "resources/icons/skills\\1629_Stab.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1631": {
+    "name": "Throw Javelin",
+    "icon_path": "resources/icons/skills\\1631_Throw Javelin.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1641": {
+    "name": "Stab",
+    "icon_path": "resources/icons/skills\\1641_Stab.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1642": {
+    "name": "Lunge",
+    "icon_path": "resources/icons/skills\\1642_Lunge.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1644": {
+    "name": "Smash",
+    "icon_path": "resources/icons/skills\\1644_Smash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1691": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\1691_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1932": {
+    "name": "Trample",
+    "icon_path": "resources/icons/skills\\1932_Trample.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1940": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\1940_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "1991": {
+    "name": "Counter Attack",
+    "icon_path": "resources/icons/skills\\1991_Counter Attack.png",
+    "icon_url": "https://render.guildwars2.com/file/FBD00439223B4710B62E5EBE5EC1293E9B070E45/103041.png"
+  },
+  "1996": {
+    "name": "Frost Trap",
+    "icon_path": "resources/icons/skills\\1996_Frost Trap.png",
+    "icon_url": "https://render.guildwars2.com/file/016A1099CAC468ADEE056A30551C33C74101E5D3/103074.png"
+  },
+  "2013": {
+    "name": "Axe",
+    "icon_path": "resources/icons/skills\\2013_Axe.png",
+    "icon_url": "https://render.guildwars2.com/file/FBD00439223B4710B62E5EBE5EC1293E9B070E45/103041.png"
+  },
+  "2014": {
+    "name": "Cyclone Spin",
+    "icon_path": "resources/icons/skills\\2014_Cyclone Spin.png",
+    "icon_url": "https://render.guildwars2.com/file/7594FAA56F64B7BE7668E8F804F1BBFC01DDEDB0/102822.png"
+  },
+  "2131": {
+    "name": "Sever Artery",
+    "icon_path": "resources/icons/skills\\2131_Sever Artery.png",
+    "icon_url": "https://render.guildwars2.com/file/3040B9E8344BF32EA5ADB3FB632C4F01BFD0927D/103003.png"
+  },
+  "2132": {
+    "name": "Gash",
+    "icon_path": "resources/icons/skills\\2132_Gash.png",
+    "icon_url": "https://render.guildwars2.com/file/44563D2C3BDCEB1524D2DB0F23713347CDE93D32/103004.png"
+  },
+  "2133": {
+    "name": "Final Thrust",
+    "icon_path": "resources/icons/skills\\2133_Final Thrust.png",
+    "icon_url": "https://render.guildwars2.com/file/71EB0DF5243A382A100E5ACB0870994D59BC47B7/103005.png"
+  },
+  "2134": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\2134_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1DCF048095440F767BA9669165272938EB967602/102927.png"
+  },
+  "2135": {
+    "name": "Savage Leap",
+    "icon_path": "resources/icons/skills\\2135_Savage Leap.png",
+    "icon_url": "https://render.guildwars2.com/file/F47AFFCAC1475EB0086C32AAB5AA1A6048F52A08/102778.png"
+  },
+  "2136": {
+    "name": "Whirlwind Attack",
+    "icon_path": "resources/icons/skills\\2136_Whirlwind Attack.png",
+    "icon_url": "https://render.guildwars2.com/file/3D0C289E02A7FD57D40F0A0A2AE352A49E4724C2/103093.png"
+  },
+  "2302": {
+    "name": "Flurry",
+    "icon_path": "resources/icons/skills\\2302_Flurry.png",
+    "icon_url": "https://render.guildwars2.com/file/4CF36C6EF1F0FF18484518D57233E1AFEA3B3669/103045.png"
+  },
+  "2365": {
+    "name": "Punch",
+    "icon_path": "resources/icons/skills\\2365_Punch.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2367": {
+    "name": "Branded Crystals",
+    "icon_path": "resources/icons/skills\\2367_Branded Crystals.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2397": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\2397_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2399": {
+    "name": "Slice",
+    "icon_path": "resources/icons/skills\\2399_Slice.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2400": {
+    "name": "Ambush",
+    "icon_path": "resources/icons/skills\\2400_Ambush.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2401": {
+    "name": "Ambush",
+    "icon_path": "resources/icons/skills\\2401_Ambush.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2403": {
+    "name": "Ambush",
+    "icon_path": "resources/icons/skills\\2403_Ambush.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2433": {
+    "name": "Spit",
+    "icon_path": "resources/icons/skills\\2433_Spit.png",
+    "icon_url": "https://render.guildwars2.com/file/06B6D9999AD5DA1DF303F307116E0CC25B0D7B05/103131.png"
+  },
+  "2434": {
+    "name": "Tar Pool",
+    "icon_path": "resources/icons/skills\\2434_Tar Pool.png",
+    "icon_url": "https://render.guildwars2.com/file/D617182703BF08BD90D498155C99CDD8D2FFE4F8/103132.png"
+  },
+  "2446": {
+    "name": "Shred",
+    "icon_path": "resources/icons/skills\\2446_Shred.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2498": {
+    "name": "Fire Bolt",
+    "icon_path": "resources/icons/skills\\2498_Fire Bolt.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2503": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\2503_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2504": {
+    "name": "Lunge",
+    "icon_path": "resources/icons/skills\\2504_Lunge.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2505": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\2505_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2760": {
+    "name": "Fire Blast",
+    "icon_path": "resources/icons/skills\\2760_Fire Blast.png",
+    "icon_url": "https://render.guildwars2.com/file/755303C9C50299D8E3F7166B6C23EA18D20B3644/103067.png"
+  },
+  "2783": {
+    "name": "Hit",
+    "icon_path": "resources/icons/skills\\2783_Hit.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2784": {
+    "name": "Glue Shot",
+    "icon_path": "resources/icons/skills\\2784_Glue Shot.png",
+    "icon_url": "https://render.guildwars2.com/file/AA05DE91B26C2926046495CE0293966A3C1EA492/103187.png"
+  },
+  "2800": {
+    "name": "Eye Beam",
+    "icon_path": "resources/icons/skills\\2800_Eye Beam.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2804": {
+    "name": "Tentacle Slash",
+    "icon_path": "resources/icons/skills\\2804_Tentacle Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2806": {
+    "name": "Shoot",
+    "icon_path": "resources/icons/skills\\2806_Shoot.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2823": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\2823_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2824": {
+    "name": "Throw Axe",
+    "icon_path": "resources/icons/skills\\2824_Throw Axe.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2839": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\2839_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/C245443EDDB8456F4926982F013F2820510D58CE/102762.png"
+  },
+  "2843": {
+    "name": "Paw Swipe",
+    "icon_path": "resources/icons/skills\\2843_Paw Swipe.png",
+    "icon_url": "https://render.guildwars2.com/file/C245443EDDB8456F4926982F013F2820510D58CE/102762.png"
+  },
+  "2845": {
+    "name": "Brutal Mauling",
+    "icon_path": "resources/icons/skills\\2845_Brutal Mauling.png",
+    "icon_url": "https://render.guildwars2.com/file/C245443EDDB8456F4926982F013F2820510D58CE/102762.png"
+  },
+  "2871": {
+    "name": "Jab",
+    "icon_path": "resources/icons/skills\\2871_Jab.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2879": {
+    "name": "Bite",
+    "icon_path": "resources/icons/skills\\2879_Bite.png",
+    "icon_url": "https://render.guildwars2.com/file/0917C0B5F14C0140109E99F477DD322FD7040109/103130.png"
+  },
+  "2880": {
+    "name": "Eye Blast",
+    "icon_path": "resources/icons/skills\\2880_Eye Blast.png",
+    "icon_url": "https://render.guildwars2.com/file/BB0C59CF6E5950734FD64F920FC1FD92FD0C0845/103090.png"
+  },
+  "2881": {
+    "name": "Petrifying Gaze",
+    "icon_path": "resources/icons/skills\\2881_Petrifying Gaze.png",
+    "icon_url": "https://render.guildwars2.com/file/BB0C59CF6E5950734FD64F920FC1FD92FD0C0845/103090.png"
+  },
+  "2904": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\2904_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/C245443EDDB8456F4926982F013F2820510D58CE/102762.png"
+  },
+  "2905": {
+    "name": "Swoop",
+    "icon_path": "resources/icons/skills\\2905_Swoop.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2907": {
+    "name": "Shred",
+    "icon_path": "resources/icons/skills\\2907_Shred.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2919": {
+    "name": "Thump",
+    "icon_path": "resources/icons/skills\\2919_Thump.png",
+    "icon_url": "https://render.guildwars2.com/file/7594FAA56F64B7BE7668E8F804F1BBFC01DDEDB0/102822.png"
+  },
+  "2920": {
+    "name": "Lunge",
+    "icon_path": "resources/icons/skills\\2920_Lunge.png",
+    "icon_url": "https://render.guildwars2.com/file/523149DCD3F80243760B0909B8A00C1AD81966F7/103032.png"
+  },
+  "2922": {
+    "name": "Charge",
+    "icon_path": "resources/icons/skills\\2922_Charge.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2924": {
+    "name": "Oakheart Swipe",
+    "icon_path": "resources/icons/skills\\2924_Oakheart Swipe.png",
+    "icon_url": "https://render.guildwars2.com/file/7594FAA56F64B7BE7668E8F804F1BBFC01DDEDB0/102822.png"
+  },
+  "2937": {
+    "name": "Vomit",
+    "icon_path": "resources/icons/skills\\2937_Vomit.png",
+    "icon_url": "https://render.guildwars2.com/file/BB0C59CF6E5950734FD64F920FC1FD92FD0C0845/103090.png"
+  },
+  "2939": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\2939_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2961": {
+    "name": "Rock Shards",
+    "icon_path": "resources/icons/skills\\2961_Rock Shards.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "2962": {
+    "name": "Bite",
+    "icon_path": "resources/icons/skills\\2962_Bite.png",
+    "icon_url": "https://render.guildwars2.com/file/F20A7D6B7FB71D520B4643CF120AF6A50DF7A2B0/102914.png"
+  },
+  "3032": {
+    "name": "Jab",
+    "icon_path": "resources/icons/skills\\3032_Jab.png",
+    "icon_url": "https://render.guildwars2.com/file/523149DCD3F80243760B0909B8A00C1AD81966F7/103032.png"
+  },
+  "3080": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\3080_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/C245443EDDB8456F4926982F013F2820510D58CE/102762.png"
+  },
+  "3096": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\3096_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/C245443EDDB8456F4926982F013F2820510D58CE/102762.png"
+  },
+  "3101": {
+    "name": "Diseased Bite",
+    "icon_path": "resources/icons/skills\\3101_Diseased Bite.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "3102": {
+    "name": "Slash",
+    "icon_path": "resources/icons/skills\\3102_Slash.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "3103": {
+    "name": "Screech",
+    "icon_path": "resources/icons/skills\\3103_Screech.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "3717": {
+    "name": "Frost Spit",
+    "icon_path": "resources/icons/skills\\3717_Frost Spit.png",
+    "icon_url": "https://render.guildwars2.com/file/1D55D34FB4EE20B1962E315245E40CA5E1042D0E/62248.png"
+  },
+  "3777": {
+    "name": "Buff Passive Oakheart",
+    "icon_path": "resources/icons/skills\\3777_Buff Passive Oakheart.png",
+    "icon_url": "https://render.guildwars2.com/file/E80C3E576DF7F10F0D0506C93429D314EBBD6FBF/103058.png"
+  },
+  "3786": {
+    "name": "Maul",
+    "icon_path": "resources/icons/skills\\3786_Maul.png",
+    "icon_url": "https://render.guildwars2.com/file/523149DCD3F80243760B0909B8A00C1AD81966F7/103032.png"
+  },
+  "3787": {
+    "name": "Lunge",
+    "icon_path": "resources/icons/skills\\3787_Lunge.png",
+    "icon_url": "https://render.guildwars2.com/file/523149DCD3F80243760B0909B8A00C1AD81966F7/103032.png"
+  },
+  "3788": {
+    "name": "Jab",
+    "icon_path": "resources/icons/skills\\3788_Jab.png",
+    "icon_url": "https://render.guildwars2.com/file/523149DCD3F80243760B0909B8A00C1AD81966F7/103032.png"
+  },
+  "3789": {
+    "name": "Frozen Burst",
+    "icon_path": "resources/icons/skills\\3789_Frozen Burst.png",
+    "icon_url": "https://render.guildwars2.com/file/C13AA7EC94200C0E7E24C4E47164183991107EA4/103243.png"
+  },
+  "5487": {
+    "name": "Frozen Burst",
+    "icon_path": "resources/icons/skills\\5487_Frozen Burst.png",
+    "icon_url": "https://render.guildwars2.com/file/C13AA7EC94200C0E7E24C4E47164183991107EA4/103243.png"
+  },
+  "5489": {
+    "name": "Lightning Whip",
+    "icon_path": "resources/icons/skills\\5489_Lightning Whip.png",
+    "icon_url": "https://render.guildwars2.com/file/AD9670FD92547F6254DFA9CC6BF3B49845DF0C07/102901.png"
+  },
+  "5490": {
+    "name": "Comet",
+    "icon_path": "resources/icons/skills\\5490_Comet.png",
+    "icon_url": "https://render.guildwars2.com/file/CE2D206242C6DDB571784315ABF4B51CBAC090A9/103319.png"
+  },
+  "5491": {
+    "name": "Fireball",
+    "icon_path": "resources/icons/skills\\5491_Fireball.png",
+    "icon_url": "https://render.guildwars2.com/file/E57B9C0358A6B1CE4631E336D22614E9E544DD4B/102965.png"
+  }
+}

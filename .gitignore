@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+venv/
+tools/
+tests/
+
+
+# Build output
+dist/
+dist-ssr/*.local
+build/
+
+# Environment variables
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Database files
+*.db
+
+# Logs
+*.log
+
+# Uploads
+uploads/
+
+# Development scripts
+# scripts/  # removed as folder deleted
+analyze_datajson.py
+test_zevtc_parser.py
+TEST_AND_STARTUP_GUIDE.md
+
+# Test data files
+tests/
+
+# Python cache
+__pycache__/
+*.pyc

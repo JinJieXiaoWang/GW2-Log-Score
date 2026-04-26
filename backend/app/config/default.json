@@ -1,0 +1,157 @@
+{
+  "_documentation": {
+    "description": "GW2 Log Score Backend Configuration File",
+    "version": "1.0.0",
+    "last_updated": "2024-01-01"
+  },
+
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "_description": {
+      "host": "服务器监听地址，0.0.0.0表示监听所有网络接口",
+      "port": "服务器监听端口号"
+    }
+  },
+
+  "cors": {
+    "allow_origins": ["*"],
+    "allow_credentials": true,
+    "allow_methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "allow_headers": ["*"],
+    "expose_headers": ["Content-Disposition"],
+    "max_age": 3600,
+    "_description": {
+      "allow_origins": "允许跨域请求的源列表。生产环境应设置为具体的前端域名，如['https://yourdomain.com']。开发环境可使用['*']或['http://localhost:*']",
+      "allow_credentials": "是否允许携带认证信息(cookies/authorization headers)",
+      "allow_methods": "允许的HTTP请求方法列表",
+      "allow_headers": "允许的请求头列表，['*']表示允许所有头",
+      "expose_headers": "前端可访问的响应头列表",
+      "max_age": "预检请求缓存时间(秒)"
+    },
+    "_production_note": "生产环境必须配置具体的allow_origins，禁止使用'*'"
+  },
+
+  "database": {
+    "url": "sqlite:///databases/gw2_logs.db",
+    "pool_size": 5,
+    "max_overflow": 10,
+    "pool_timeout": 30,
+    "_description": {
+      "url": "数据库连接URL。SQLite格式: sqlite:///path/to/db.db，PostgreSQL格式: postgresql://user:pass@host:port/db",
+      "pool_size": "连接池大小(仅适用于PostgreSQL/MySQL)",
+      "max_overflow": "连接池最大溢出数",
+      "pool_timeout": "获取连接超时时间(秒)"
+    }
+  },
+
+  "upload": {
+    "directory": "uploads/",
+    "max_size": 10485760,
+    "allowed_extensions": [".json", ".evtc", ".zevtc", ".zetvc"],
+    "_description": {
+      "directory": "上传文件存储目录，相对于项目根目录",
+      "max_size": "最大文件大小(字节)，默认10MB",
+      "allowed_extensions": "允许上传的文件扩展名列表"
+    }
+  },
+
+  "logging": {
+    "level": "INFO",
+    "file": "logs/backend.log",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "date_format": "%Y-%m-%d %H:%M:%S",
+    "rotation": {
+      "max_size": 10485760,
+      "backup_count": 5
+    },
+    "console": {
+      "enabled": true,
+      "level": "DEBUG"
+    },
+    "_description": {
+      "level": "日志级别: DEBUG, INFO, WARNING, ERROR, CRITICAL",
+      "file": "日志文件路径",
+      "format": "日志格式字符串",
+      "date_format": "日期时间格式",
+      "rotation.max_size": "单个日志文件最大大小(字节)",
+      "rotation.backup_count": "保留的历史日志文件数量",
+      "console.enabled": "是否输出到控制台",
+      "console.level": "控制台日志级别"
+    }
+  },
+
+  "security": {
+    "secret_key": "${SECRET_KEY:-'2b9a1f5e7c3d8b6a4e2f9c7d5b3a1f8e'}",
+    "api_key_header": "X-API-Key",
+    "rate_limit": {
+      "enabled": false,
+      "requests_per_minute": 60
+    },
+    "_description": {
+      "secret_key": "应用密钥，用于JWT签名等安全功能。优先从环境变量SECRET_KEY读取，默认值仅用于开发环境",
+      "api_key_header": "API Key请求头名称",
+      "rate_limit.enabled": "是否启用请求速率限制",
+      "rate_limit.requests_per_minute": "每分钟最大请求数"
+    },
+    "_security_note": "生产环境必须通过环境变量设置强随机SECRET_KEY"
+  },
+
+  "scoring": {
+    "threshold": 80,
+    "config": {
+      "PVE": {
+        "DPS": {
+          "weights": {"dps": 0.4, "cc": 0.35, "survival": 0.25},
+          "metrics": ["dps", "cc", "survival"],
+          "_description": "PVE DPS角色评分权重：DPS占40%，破控占35%，生存占25%"
+        },
+        "SUPPORT": {
+          "weights": {"stability": 0.35, "resistance": 0.35, "boon": 0.3},
+          "metrics": ["stability", "resistance", "boon"],
+          "_description": "PVE辅助角色评分权重：稳固占35%，抗性占35%，增益占30%"
+        }
+      },
+      "WvW": {
+        "DPS": {
+          "weights": {"dps": 0.6, "downs": 0.2, "survival": 0.2},
+          "metrics": ["dps", "downs_per_min", "survival"],
+          "_description": "WvW DPS角色评分权重：DPS占60%，击倒占20%，生存占20%"
+        },
+        "SUPPORT": {
+          "weights": {"stability": 0.2, "resistance": 0.15, "quickness": 0.15, "cleanses": 0.2, "strips": 0.2, "survival": 0.1},
+          "metrics": ["stability_per_sec", "resistance_per_sec", "quickness_per_sec", "cleanses_per_min", "strips_per_min", "survival"],
+          "_description": "WvW辅助角色评分权重：稳固20%，抗性15%，急速15%，清洁20%，剥离20%，生存10%"
+        },
+        "UTILITY": {
+          "weights": {"strips": 0.3, "cleanses": 0.3, "cc": 0.2, "survival": 0.2},
+          "metrics": ["strips_per_min", "cleanses_per_min", "cc_per_min", "survival"],
+          "_description": "WvW工具角色评分权重：剥离30%，清洁30%，破控20%，生存20%"
+        }
+      }
+    },
+    "_description": {
+      "threshold": "评分合格阈值，低于此分数的玩家可能需要改进",
+      "config": "各游戏模式和角色的评分配置"
+    }
+  },
+
+  "buff_ids": {
+    "稳固": 1122,
+    "抗性": 4614,
+    "急速": 1187,
+    "敏捷": 30328,
+    "保护": 717,
+    "决心": 718,
+    "_description": "GW2增益效果ID映射表，用于识别玩家提供的增益类型"
+  },
+
+
+
+  "environment": "development",
+  "_environment_values": {
+    "development": "开发环境，启用调试功能，宽松的安全配置",
+    "staging": "预发布环境，接近生产配置",
+    "production": "生产环境，严格的安全配置"
+  }
+}
